@@ -65,8 +65,10 @@ return {createGrids,createGameboard}
 
 //below needs to be sorted into modules of their own at the moment
 
-function chooseCrdnts(StrtLttrs,StrtNo,length){
+function chooseCrdnts(StrtLttrs,StrtNo,length,VorH){
     let coord = [];
+    
+    if(VorH==="V"){
     let over = 11-length;
     //building it so when the user selects a number it keeps it within the grid
     if(StrtNo>over){StrtNo = over}
@@ -74,19 +76,36 @@ function chooseCrdnts(StrtLttrs,StrtNo,length){
     for(let i=1;i<length+1;i++){
         coord.push(StrtLttrs + StrtNo++)
     }
+}
+
+else if(VorH==="H"){
+    let LtrNumber = StrtLttrs.charCodeAt(0)
+    let over = 107-length;
+    //building it so when the user selects a number it keeps it within the grid
+    if(LtrNumber>over){LtrNumber = over}
+    
+    for(let i=1;i<length+1;i++){
+        coord.push(String.fromCharCode(LtrNumber++) + StrtNo)
+    }
+
+}
     return coord;
 
 }
 
+document.getElementById("Chnge").addEventListener('click',()=>{if(direction==="V"){direction="H";}else if(direction==="H"){direction="V"}})
+
 let player1coord=[];
 let player2coord=[];
-
+//V=Vertical, H=Horizontal
+let direction = "V"
 //basically a factory function for a 5 square ship
 function bttlship1(t){
 t.target.style.backgroundColor = "red";
 let letter = t.target.dataset.letter;
 let number = t.target.dataset.number;
-player1coord.push(chooseCrdnts(letter,number,5));
+alert("Your battleship will have the coordinates: "+chooseCrdnts(letter,number,5,direction))
+player1coord.push(chooseCrdnts(letter,number,5,direction));
 }
 
 //to be able to invoke both functions and to remove it
