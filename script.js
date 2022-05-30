@@ -28,8 +28,10 @@ let number = grid.dataset.number = no;
 
 //creating a class for each grid so we can access it from the functions
 grid.classList.add("cell");
+//creating an id that matches its coordinates
+grid.setAttribute('id',grid.dataset.letter+grid.dataset.number)
 
-grid.addEventListener("mouseover",()=>{grid.style.backgroundColor = "black";})
+//grid.addEventListener("mouseover",()=>{grid.style.backgroundColor = "black";})
 grid.addEventListener("mouseleave",()=>{if(grdata === "No"){grid.style.backgroundColor = "white"}else{grid.style.backgroundColor = "red"};})
                                                                    
 let gameboard =  document.getElementById("gameboard1");
@@ -62,7 +64,6 @@ return {createGrids,createGameboard}
 })();
 
 
-
 //below needs to be sorted into modules of their own at the moment
 
 function chooseCrdnts(StrtLttrs,StrtNo,length,VorH){
@@ -92,20 +93,49 @@ else if(VorH==="H"){
     return coord;
 
 }
+//function for highlighting squares when hovering
+function hover(t){t.target.style.backgroundColor="green";
+let numb = t.target.dataset.number;
+let letterr = t.target.dataset.letter
+document.getElementById(letterr+(+numb+1)).style.backgroundColor = "green"}
 
-document.getElementById("Chnge").addEventListener('click',()=>{if(direction==="V"){direction="H";}else if(direction==="H"){direction="V"}})
-
+//function for returning square color to white after leaving
+function leave(t){t.target.style.backgroundColor="white";
+let numb = t.target.dataset.number;
+let letterr = t.target.dataset.letter
+document.getElementById(letterr+(+numb+1)).style.backgroundColor = "white"
+}
+//button to change the positioning of the placement
+document.getElementById("Chnge").addEventListener('click',()=>{if(direction==="V"){direction="H";document.getElementById("position").textContent="Horizontal";}else if(direction==="H"){direction="V";document.getElementById("position").textContent="Vertical"}})
+//highlight the squares that are being selected
+function highlight(t){t.target.style.backgroundColor = "green";}
+//coordinates of each players ship, just for testing until we use multiple ships
 let player1coord=[];
+document.getElementById("p1c").textContent = player1coord;
 let player2coord=[];
+document.getElementById("p2c").textContent = player2coord;
 //V=Vertical, H=Horizontal
 let direction = "V"
-//basically a factory function for a 5 square ship
+//player in play
+let playerBase = ["player1","player2"];
+let pip = playerBase[0];
+document.getElementById("pip").textContent = pip;
+//function changes player
+const chanPlayer = ()=>{   
+    if(pip === playerBase[0]){pip = playerBase[1]; document.getElementById("pip").textContent = pip;}
+    else if(pip === playerBase[1]){pip = playerBase[0];document.getElementById("pip").textContent = pip;}
+    else{pip = playerBase[0];document.getElementById("pip").textContent = pip;}
+}
+
+//basically a factory function for a 2 square ship
 function bttlship1(t){
 t.target.style.backgroundColor = "red";
 let letter = t.target.dataset.letter;
 let number = t.target.dataset.number;
-alert("Your battleship will have the coordinates: "+chooseCrdnts(letter,number,5,direction))
-player1coord.push(chooseCrdnts(letter,number,5,direction));
+//alert("Your battleship will have the coordinates: "+chooseCrdnts(letter,number,2,direction))
+player1coord.push(chooseCrdnts(letter,number,2,direction));
+document.getElementById("p1c").textContent = player1coord;
+chanPlayer();
 }
 
 //to be able to invoke both functions and to remove it
@@ -119,10 +149,15 @@ function pb1(){
 GameboardModule.createGameboard();
 let cells = document.querySelectorAll(".cell")
 for(i=0;i<cells.length;i++){
-    cells[i].addEventListener('click',chan)
+    cells[i].addEventListener('click',chan) 
+    cells[i].addEventListener('mouseover',hover)
+cells[i].addEventListener('mouseleave',leave)
+
      
 }
 }
+
+
 
 function pb2(){
     let cells = document.querySelectorAll(".cell")
@@ -130,15 +165,62 @@ function pb2(){
 for(i=0;i<cells.length;i++){
     cells[i].removeEventListener('click',chan)
 
-    cells[i].addEventListener('click',(t)=>{
-     t.target.style.backgroundColor = "red";
-     let letter = t.target.dataset.letter;
-    let number = t.target.dataset.number;
-     player2coord.push(chooseCrdnts(letter,number,5));
-     
-     
-})
+    cells[i].addEventListener('click',bttlship2)
 }
+}
+
+function bttlship2(t){
+    t.target.style.backgroundColor = "red";
+         let letter = t.target.dataset.letter;
+        let number = t.target.dataset.number;
+        //alert("Your battleship will have the coordinates: "+chooseCrdnts(letter,number,2,direction))
+         player2coord.push(chooseCrdnts(letter,number,2,direction));
+         document.getElementById("p2c").textContent = player2coord;
+         chanPlayer();
+         rmveven();
+         playGame();}
+
+//remove event listeners
+function rmveven(){
+    let cells=document.querySelectorAll(".cell")
+    for(i=0;i<cells.length;i++){
+        cells[i].removeEventListener('click',bttlship2)
+    cells[i].removeEventListener('mouseover',hover)
+    cells[i].removeEventListener('mouseleave',leave)
+}
+}
+let PC = player1coord;
+//when a player hits a grid
+function hit(t){
+    let L = t.target.dataset.letter;
+    let N = t.target.dataset.number;
+    let hitCoord = L+N;
+    console.log(hitCoord);
+    
+    if(pip === playerBase[0]){PC = player2coord;}
+    else if(pip === playerBase[1]){PC = player1coord;}
+console.log(PC[0]);
+for(let i=0;i<PC[0].length;i++){
+    if(PC[0][i]===hitCoord){
+        alert("HIT");
+    PC[0].splice(i,1);
+    chanPlayer();}
+    else{chanPlayer()}
+}
+return PC}
+//the main game loop
+function playGame(){
+    document.getElementById("p1c").textContent = player1coord;
+    document.getElementById("p2c").textContent = player2coord;
+    let cells= document.querySelectorAll(".cell");
+    for(i=0;i<cells.length;i++){
+
+cells[i].addEventListener('click',hit)
+cells[i].style.backgroundColor = "white";
+cells[i].addEventListener('mouseover',(t)=>{t.target.style.backgroundColor="red"})
+cells[i].addEventListener('mouseleave',(t)=>{t.target.style.backgroundColor="white"})
+}
+
 }
 
 pb1();
@@ -146,6 +228,5 @@ pb1();
 
 
 
-
-
+                                    
 
