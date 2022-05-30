@@ -205,9 +205,8 @@ for(let i=0;i<PC[0].length;i++){
     if(PC[0][i]===hitCoord){
         alert("HIT");
     PC[0].splice(i,1);
-    chanPlayer();}
-    
-}
+    }}
+
 chanPlayer();
 return PC}
 //the main game loop
