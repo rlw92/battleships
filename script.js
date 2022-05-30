@@ -121,7 +121,8 @@ let playerBase = ["player1","player2"];
 let pip = playerBase[0];
 document.getElementById("pip").textContent = pip;
 //function changes player
-const chanPlayer = ()=>{   
+const chanPlayer = ()=>{   document.getElementById("p1c").textContent = player1coord;
+document.getElementById("p2c").textContent = player2coord;
     if(pip === playerBase[0]){pip = playerBase[1]; document.getElementById("pip").textContent = pip;}
     else if(pip === playerBase[1]){pip = playerBase[0];document.getElementById("pip").textContent = pip;}
     else{pip = playerBase[0];document.getElementById("pip").textContent = pip;}
@@ -205,14 +206,13 @@ for(let i=0;i<PC[0].length;i++){
         alert("HIT");
     PC[0].splice(i,1);
     chanPlayer();}
-    else{chanPlayer()}
+    
 }
+chanPlayer();
 return PC}
 //the main game loop
 function playGame(){
-    document.getElementById("p1c").textContent = player1coord;
-    document.getElementById("p2c").textContent = player2coord;
-    let cells= document.querySelectorAll(".cell");
+        let cells= document.querySelectorAll(".cell");
     for(i=0;i<cells.length;i++){
 
 cells[i].addEventListener('click',hit)
