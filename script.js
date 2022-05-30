@@ -200,11 +200,13 @@ function hit(t){
     
     if(pip === playerBase[0]){PC = player2coord;}
     else if(pip === playerBase[1]){PC = player1coord;}
-console.log(PC[0]);
 for(let i=0;i<PC[0].length;i++){
     if(PC[0][i]===hitCoord){
         alert("HIT");
     PC[0].splice(i,1);
+    console.log(PC[0]);
+    gameOver();
+    //if(PC[0].length===0){alert(pip+" has won")}
     }}
 
 chanPlayer();
@@ -220,6 +222,13 @@ cells[i].addEventListener('mouseover',(t)=>{t.target.style.backgroundColor="red"
 cells[i].addEventListener('mouseleave',(t)=>{t.target.style.backgroundColor="white"})
 }
 
+}
+
+//function that checks to see if the arrays are empty and declare a winner
+function gameOver(){
+    console.log(player1coord[0])
+    if(player1coord[0].length === 0){alert("Player two wins")}
+    else if(player2coord[0].length === 0){alert("Player one wins")}
 }
 
 pb1();
