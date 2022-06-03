@@ -132,6 +132,7 @@ function gameOver(){
     if(player1coord[0].length === 0){alert("Player two wins");}
     else if(player2coord[0].length === 0){alert("Player one wins")}
 }
+
 function playGame(){
     let cells= document.querySelectorAll(".cell");
 for(let i=0;i<cells.length;i++){
