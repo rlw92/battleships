@@ -5,6 +5,8 @@ import {GameboardModule} from './gameboard'
 
 
 
+
+
 //below needs to be sorted into modules of their own at the moment
 
 function chooseCrdnts(StrtLttrs,StrtNo,length,VorH){
@@ -80,6 +82,7 @@ function chan(t){
 function pb1(){
 GameboardModule.createGameboard();
 let cells = document.querySelectorAll(".cell")
+
 for(let i=0;i<cells.length;i++){
     cells[i].addEventListener('click',chan) 
     cells[i].addEventListener('mouseover',hover)
@@ -122,29 +125,6 @@ function rmveven(){
 }
 }
 
-
-
-
-
-
-function gameOver(){
-    console.log(player1coord[0])
-    if(player1coord[0].length === 0){alert("Player two wins");}
-    else if(player2coord[0].length === 0){alert("Player one wins")}
-}
-
-function playGame(){
-    let cells= document.querySelectorAll(".cell");
-for(let i=0;i<cells.length;i++){
-
-cells[i].addEventListener('click',hit)
-cells[i].style.backgroundColor = "white";
-cells[i].addEventListener('mouseover',(t)=>{t.target.style.backgroundColor="red"})
-cells[i].addEventListener('mouseleave',(t)=>{t.target.style.backgroundColor="white"})
-}
-
-}
-
 let PC = player1coord;
 function hit(t){
     let L = t.target.dataset.letter;
@@ -162,6 +142,33 @@ for(let i=0;i<PC[0].length;i++){
     gameOver();
     }}chanPlayer();
     return PC}
+    function gameOver(){
+        console.log(player1coord[0])
+        if(player1coord[0].length === 0){alert("Player two wins");}
+        else if(player2coord[0].length === 0){alert("Player one wins")}
+    }
+    
+    
+function playGame(){
+    let cells= document.querySelectorAll(".cell");
+for(let i=0;i<cells.length;i++){
+
+cells[i].addEventListener('click',hit)
+cells[i].style.backgroundColor = "white";
+cells[i].addEventListener('mouseover',(t)=>{t.target.style.backgroundColor="red"})
+cells[i].addEventListener('mouseleave',(t)=>{t.target.style.backgroundColor="white"})
+}
+
+}
+
+
+
+
+
+
+
+
+
 
 
 pb1();
