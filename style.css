@@ -1,0 +1,14 @@
+
+#gameboard1{display:grid;
+    width:80%;
+   grid-template-columns: repeat(11,1fr);
+   grid-template-rows: repeat(11,50px);
+           }
+#gameboard2{display:none;
+           width:80%;
+          grid-template-columns: repeat(11,1fr);
+          grid-template-rows: repeat(11,50px);
+                  }
+#flex{display:flex;
+      justify-content: center;}
+           
