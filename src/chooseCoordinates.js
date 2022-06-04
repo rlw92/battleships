@@ -14,9 +14,11 @@ function chooseCrdnts(StrtLttrs,StrtNo,length,VorH){
 
 else if(VorH==="H"){
     let LtrNumber = StrtLttrs.charCodeAt(0)
-    let over = 107-length;
+    let over = 75-length;
     //building it so when the user selects a number it keeps it within the grid
     if(LtrNumber>over){LtrNumber = over}
+    console.log(LtrNumber)
+    console.log(over)
     
     for(let i=1;i<length+1;i++){
         coord.push(String.fromCharCode(LtrNumber++) + StrtNo)
