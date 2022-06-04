@@ -3,3 +3,5 @@ function shipfactory(name,coordinates){
     this.coordinates = coordinates
     
   }
+
+  export {shipfactory}

@@ -29,9 +29,7 @@ const GameboardModule = (() => {
     //creating an id that matches its coordinates
     grid.setAttribute('id',grid.dataset.letter+grid.dataset.number)
     
-    //grid.addEventListener("mouseover",()=>{grid.style.backgroundColor = "black";})
-    grid.addEventListener("mouseleave",()=>{if(grdata === "No"){grid.style.backgroundColor = "white"}else{grid.style.backgroundColor = "red"};})
-                                                                       
+         
     let gameboard =  document.getElementById("gameboard1");
     
     gameboard.appendChild(grid);
