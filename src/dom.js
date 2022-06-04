@@ -28,7 +28,15 @@ if(direction==="V"){
     }
     }
 
-return{hover,leave}
+    //purely for building purposes
+function showCoordp1(){
+    for(let i=0;i<player1coord.length;i++){
+        let p = document.createElement("p")
+        p.textContent = player1coord[i].name +'-'+player1coord[i].coordinates;
+        document.getElementById("p1c").appendChild(p);
+      }}
+
+return{hover,leave,showCoordp1}
 })();
 
 

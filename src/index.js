@@ -1,6 +1,6 @@
 import {GameboardModule} from './gameboard'
 import {chooseCrdnts} from './chooseCoordinates'
-import {shipfactory,carrier} from './ships'
+import {shipfactory,carrier,battleship} from './ships'
 import {domModule} from './dom'
 
 
@@ -9,6 +9,8 @@ import {domModule} from './dom'
   //coordinates of each players ship, just for testing until we use multiple ships
   
   let player1coord=[];
+
+  
   let player2coord=[];
   document.getElementById("p2c").textContent = player2coord;
   //V=Vertical, H=Horizontal
@@ -143,20 +145,36 @@ const selectionModule = (() =>{
 
         
     //adds an event listener to every grid cell allowing us to choose our coordinates,map them to the array then change player
-    function pb1(){
+    function p1carrierShip(){
+       
         GameboardModule.createGameboard();
         let cells = document.querySelectorAll(".cell")
         //sq is controlling the highlighting number
         sq=2;
         for(let i=0;i<cells.length;i++){
             cells[i].addEventListener('click',carrier) 
-            cells[i].addEventListener('click',pb2) 
+            cells[i].addEventListener('click',selectionModule.p1battleShip) 
             cells[i].addEventListener('mouseover',domModule.hover)
         cells[i].addEventListener('mouseleave',domModule.leave)
         }
         }
+    function p1battleShip(){
+        
+        let cells = document.querySelectorAll(".cell")
+        
+        //sq is controlling the highlighting number
+        sq=3;
+        for(let i=0;i<cells.length;i++){
+            cells[i].removeEventListener('click',carrier) 
+            cells[i].removeEventListener('click',selectionModule.p1battleShip) 
+            cells[i].addEventListener('click',battleship) 
+            cells[i].addEventListener('click',pb2) 
+            cells[i].addEventListener('mouseover',domModule.hover)
+        cells[i].addEventListener('mouseleave',domModule.leave)
+        }
+    }
     
-        return{pb1}
+        return{p1carrierShip,p1battleShip}
     
     })();
 
@@ -165,7 +183,7 @@ const selectionModule = (() =>{
 
 
 
-selectionModule.pb1();
+selectionModule.p1carrierShip();
 
 
 

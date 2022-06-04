@@ -19,9 +19,11 @@ function shipfactory(name,coordinates){
     if(pip === playerBase[0]){PC = player1coord;}
     else if(pip === playerBase[1]){PC = player2coord;}
     PC.push(gunn);
-    document.getElementById("p1c").textContent = PC
-    chanPlayer();
-    document.getElementById("p1c").textContent = PC[0].name +"-"+ PC[0].coordinates;
+        
+      let p = document.createElement("p")
+      p.textContent = 'Carrier' +"-"+ chooseCrdnts(letter,number,2,direction)
+      document.getElementById("p1c").appendChild(p);
+    
     return PC;
     }
 
@@ -36,11 +38,15 @@ function shipfactory(name,coordinates){
     else if(pip === playerBase[1]){PC = player2coord;}
     PC.push(gunn);
     chanPlayer();
-    document.getElementById("p1c").textContent = PC[0].name +"-"+ PC[0].coordinates;
+
+    let p = document.createElement("p")
+      p.textContent = 'BattleShip' +"-"+ chooseCrdnts(letter,number,3,direction)
+      document.getElementById("p1c").appendChild(p);
+    
     return PC;
   }
   const cruiser = () =>{}
   const submarine = () =>{}
   const destroyer = () =>{}
 
-  export {shipfactory,carrier}
+  export {shipfactory,carrier,battleship}
