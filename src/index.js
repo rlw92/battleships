@@ -1,6 +1,6 @@
 import {GameboardModule} from './gameboard'
 import {chooseCrdnts} from './chooseCoordinates'
-import {shipfactory} from './ships'
+import {shipfactory,carrier} from './ships'
 import {domModule} from './dom'
 
 
@@ -17,7 +17,7 @@ import {domModule} from './dom'
   let playerBase = ["player1","player2"];
   let pip = playerBase[0];
   document.getElementById("pip").textContent = pip;
-  //the squares that need highlightin
+  //the squares that need highlighting for the dom
   let sq;
   
 
@@ -26,7 +26,7 @@ document.getElementById("Chnge").addEventListener('click',()=>{if(direction==="V
 
 
 //function changes player
-const chanPlayer = ()=>{   document.getElementById("p1c").textContent = player1coord;
+const chanPlayer = ()=>{
 document.getElementById("p2c").textContent = player2coord;
     if(pip === playerBase[0]){pip = playerBase[1]; document.getElementById("pip").textContent = pip;}
     else if(pip === playerBase[1]){pip = playerBase[0];document.getElementById("pip").textContent = pip;}
@@ -68,6 +68,7 @@ for(let i=0;i<PC[0].length;i++){
     
 
 //basically a factory function for a 2 square ship
+/*commented out to test cross webpack
 function bttlship1(t){
     
 t.target.style.backgroundColor = "red";
@@ -80,13 +81,10 @@ document.getElementById("p1c").textContent = player1coord;
 chanPlayer();
 document.getElementById("p1c").textContent = player1coord[0].name +"-"+ player1coord[0].coordinates;
 return player1coord;
-}
+}*/
 
 //to be able to invoke both functions and to remove it
-function chan(t){
-    bttlship1(t);
-    pb2();
-}
+//need to get rid of this and call it all in the listener
 
 
 
@@ -96,8 +94,9 @@ function pb2(){
     let cells = document.querySelectorAll(".cell")
 
 for(let i=0;i<cells.length;i++){
-    cells[i].removeEventListener('click',chan)
-
+    sq=2;
+    cells[i].removeEventListener('click',carrier) 
+    cells[i].removeEventListener('click',pb2)
     cells[i].addEventListener('click',bttlship2)
 }
 }
@@ -142,14 +141,16 @@ cells[i].addEventListener('mouseleave',(t)=>{t.target.style.backgroundColor="whi
 
 const selectionModule = (() =>{
 
+        
     //adds an event listener to every grid cell allowing us to choose our coordinates,map them to the array then change player
     function pb1(){
         GameboardModule.createGameboard();
         let cells = document.querySelectorAll(".cell")
         //sq is controlling the highlighting number
-        sq=5;
+        sq=2;
         for(let i=0;i<cells.length;i++){
-            cells[i].addEventListener('click',chan) 
+            cells[i].addEventListener('click',carrier) 
+            cells[i].addEventListener('click',pb2) 
             cells[i].addEventListener('mouseover',domModule.hover)
         cells[i].addEventListener('mouseleave',domModule.leave)
         }
@@ -169,7 +170,7 @@ selectionModule.pb1();
 
 
 
-export {sq,direction}
+export {sq,direction,pip,player1coord,player2coord,playerBase,chanPlayer}
 
 
 

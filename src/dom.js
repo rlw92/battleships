@@ -1,8 +1,6 @@
 import {sq,direction} from './index'
 const domModule = (() =>{
 //function for highlighting squares when hovering
-
-
 function hover(t){t.target.style.backgroundColor="green";
 let numb = t.target.dataset.number;
 let letterr = t.target.dataset.letter

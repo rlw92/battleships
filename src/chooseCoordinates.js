@@ -1,3 +1,4 @@
+//the chooose coordinates function
 function chooseCrdnts(StrtLttrs,StrtNo,length,VorH){
     let coord = [];
     
