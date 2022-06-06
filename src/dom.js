@@ -1,4 +1,4 @@
-import {sq,direction} from './index'
+import {sq,direction,player1coord,player2coord} from './index'
 const domModule = (() =>{
 //function for highlighting squares when hovering
 function hover(t){t.target.style.backgroundColor="green";
@@ -29,14 +29,20 @@ if(direction==="V"){
     }
 
     //purely for building purposes
-function showCoordp1(){
+function showCoordp(){
     for(let i=0;i<player1coord.length;i++){
         let p = document.createElement("p")
         p.textContent = player1coord[i].name +'-'+player1coord[i].coordinates;
         document.getElementById("p1c").appendChild(p);
+      }
+
+      for(let i=0;i<player2coord.length;i++){
+        let p = document.createElement("p")
+        p.textContent = player2coord[i].name +'-'+player2coord[i].coordinates;
+        document.getElementById("p2c").appendChild(p);
       }}
 
-return{hover,leave,showCoordp1}
+return {hover,leave,showCoordp}
 })();
 
 

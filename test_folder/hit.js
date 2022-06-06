@@ -8,6 +8,8 @@ The hit function has to:
 #if there is no hit or empty array then the match continues and the opponent is in play
  */
 
+//hit to go in the index
+/*
 function hit(t){
     let L = t.target.dataset.letter;
     let N = t.target.dataset.number;
@@ -24,5 +26,29 @@ for(let i=0;i<PC.length;i++){
 return PC;
 
 }
+*/
+
+/*test function for a single array
+function hit(hitcoord,cd){
+   
+    for(let i=0;i<cd.length;i++){
+        if(cd[i]===hitcoord){
+        cd.splice(i,1)
+        }
+    }
+        
+      
+
+}*/
+
+function hit(hitcoord,cd){
+    for(let p=0;p<cd.length;p++){
+    for(let i=0;i<cd[p].coordinates.length;i++){
+    if(cd[p].coordinates[i]===hitcoord){
+    cd.splice(i,1)
+    }}
+}}
+
+
 
 export default hit

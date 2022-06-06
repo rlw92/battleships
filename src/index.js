@@ -5,6 +5,8 @@ import {domModule} from './dom'
 
 
 
+console.log("HI");
+
   //coordinates of each players ship, just for testing until we use multiple ships
   let player1coord=[];
   let player2coord=[];
@@ -34,30 +36,46 @@ const chanPlayer = ()=>{
 //hit function for the main game loop
 //in future will mark thee square as hit not allowing the player to hit again
 //takes the coordinates out of the players array
-function hit(t){
-    let PC = player1coord;
+
+function hit(t){console.log(t.target.dataset.letter);
+    /*let PC = player1coord;
     let L = t.target.dataset.letter;
     let N = t.target.dataset.number;
     let hitCoord = L+N;
     console.log(hitCoord);
+    console.log(PC.length);
+    
+    
     
     if(pip === playerBase[0]){PC = player2coord;}
     else if(pip === playerBase[1]){PC = player1coord;}
 
-
-for(let i=0;i<PC[0].length;i++){
-    if(PC[0][i]===hitCoord){
+console.log(PC[2].coordinates)
+console.log(PC)
+for(let p=0;p<PC.length;p++){
+    console.log(PC[p])
+for(let i=0;i<PC[p].coordinates.length;i++){
+    if(PC[p].coordinates[i]===hitCoord){
         alert("HIT");
-    PC[0].splice(i,1);
-    console.log(PC[0]);
+        
+    PC[p].coordinates[i].splice(i,1);
+    
     gameOver();
-    }}chanPlayer();
-    return PC}
+    chanPlayer();
+    }
+    
+}
+}
+    chanPlayer();
+return PC
+*/
+}
 
-    function gameOver(){
+ function gameOver(){
         console.log(player1coord[0])
         if(player1coord[0].length === 0){alert("Player two wins");}
         else if(player2coord[0].length === 0){alert("Player one wins")}
+        
     }
     
 
@@ -202,7 +220,6 @@ selectionModule.p1carrierShip();
 
 
 selectionModule.p1carrierShip();
-
 
 
 
