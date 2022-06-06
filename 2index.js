@@ -44,14 +44,14 @@ function hit(t){
     if(pip === playerBase[0]){PC = player2coord;}
     else if(pip === playerBase[1]){PC = player1coord;}
 
-
-for(let i=0;i<PC[0].length;i++){
-    if(PC[0][i]===hitCoord){
+for(p=0;p<)PC.length;p++){
+for(let i=0;i<PC[p].length;i++){
+    if(PC[p][i]===hitCoord){
         alert("HIT");
     PC[0].splice(i,1);
     console.log(PC[0]);
     gameOver();
-    }}chanPlayer();
+    }}}chanPlayer();
     return PC}
 
     function gameOver(){
