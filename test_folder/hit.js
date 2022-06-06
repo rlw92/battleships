@@ -45,7 +45,7 @@ function hit(hitcoord,cd){
     for(let p=0;p<cd.length;p++){
     for(let i=0;i<cd[p].coordinates.length;i++){
     if(cd[p].coordinates[i]===hitcoord){
-    cd.splice(i,1)
+    cd[p].coordinates.splice(i,1)
     }}
 }}
 

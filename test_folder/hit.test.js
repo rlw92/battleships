@@ -21,5 +21,13 @@ test('Takes coordinates out of the array that has been hit', () => {
 
   test('Takes coordinates out of the array that has been hit', () => {    
     hit('b1',objectcoord);
-    expect(objectcoord[0].coordinates).toEqual(['b2','b3']);
+    expect(objectcoord[1].coordinates).toEqual(['b2','b3']);
+  });
+  test('Takes coordinates out of the array that has been hit', () => {    
+    hit('a2',objectcoord);
+    expect(objectcoord[0].coordinates).toEqual(['a1','a3']);
+  });
+  test('Takes coordinates out of the array that has been hit', () => {    
+    hit('b3',objectcoord);
+    expect(objectcoord[1].coordinates).toEqual(['b2']);
   });
