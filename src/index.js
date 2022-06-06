@@ -1,6 +1,6 @@
 import {GameboardModule} from './gameboard'
 import {chooseCrdnts} from './chooseCoordinates'
-import {shipfactory,carrier,battleship} from './ships'
+import {carrier,battleship,cruiser,submarine,destroyer} from './ships'
 import {domModule} from './dom'
 
 
@@ -12,7 +12,7 @@ import {domModule} from './dom'
 
   
   let player2coord=[];
-  document.getElementById("p2c").textContent = player2coord;
+
   //V=Vertical, H=Horizontal
   let direction = "V"
   //player in play
@@ -29,7 +29,6 @@ document.getElementById("Chnge").addEventListener('click',()=>{if(direction==="V
 
 //function changes player
 const chanPlayer = ()=>{
-document.getElementById("p2c").textContent = player2coord;
     if(pip === playerBase[0]){pip = playerBase[1]; document.getElementById("pip").textContent = pip;}
     else if(pip === playerBase[1]){pip = playerBase[0];document.getElementById("pip").textContent = pip;}
     else{pip = playerBase[0];document.getElementById("pip").textContent = pip;}
@@ -69,63 +68,26 @@ for(let i=0;i<PC[0].length;i++){
     }
     
 
-//basically a factory function for a 2 square ship
-/*commented out to test cross webpack
-function bttlship1(t){
-    
-t.target.style.backgroundColor = "red";
-let letter = t.target.dataset.letter;
-let number = t.target.dataset.number;
-//alert("Your battleship will have the coordinates: "+chooseCrdnts(letter,number,2,direction))
-let gunn = new shipfactory("Gunner",chooseCrdnts(letter,number,2,direction))
-player1coord.push(gunn);
-document.getElementById("p1c").textContent = player1coord;
-chanPlayer();
-document.getElementById("p1c").textContent = player1coord[0].name +"-"+ player1coord[0].coordinates;
-return player1coord;
-}*/
-
-//to be able to invoke both functions and to remove it
-//need to get rid of this and call it all in the listener
 
 
 
 
 
-function pb2(){
-    let cells = document.querySelectorAll(".cell")
 
+
+
+
+
+function startGame(){
+    sq=1
+    chanPlayer();
+    let cells= document.querySelectorAll(".cell");
 for(let i=0;i<cells.length;i++){
-    sq=2;
-    cells[i].removeEventListener('click',carrier) 
-    cells[i].removeEventListener('click',pb2)
-    cells[i].addEventListener('click',bttlship2)
+
+cells[i].removeEventListener('click',startGame)
+cells[i].style.backgroundColor = "white";
 }
-}
-
-function bttlship2(t){
-    t.target.style.backgroundColor = "red";
-         let letter = t.target.dataset.letter;
-        let number = t.target.dataset.number;
-        //alert("Your battleship will have the coordinates: "+chooseCrdnts(letter,number,2,direction))
-         player2coord.push(chooseCrdnts(letter,number,2,direction));
-         document.getElementById("p2c").textContent = player2coord;
-         chanPlayer();
-         rmveven();
-         playGame();}
-
-//remove event listeners
-function rmveven(){
-    let cells=document.querySelectorAll(".cell")
-    for(let i=0;i<cells.length;i++){
-        cells[i].removeEventListener('click',bttlship2)
-    cells[i].removeEventListener('mouseover',domModule.hover)
-    cells[i].removeEventListener('mouseleave',domModule.leave)
-}
-}
-
-
-
+playGame();}
     
     
 function playGame(){
@@ -141,6 +103,9 @@ cells[i].addEventListener('mouseleave',(t)=>{t.target.style.backgroundColor="whi
 }
 
 
+
+
+//Selection module
 const selectionModule = (() =>{
 
         
@@ -168,13 +133,82 @@ const selectionModule = (() =>{
             cells[i].removeEventListener('click',carrier) 
             cells[i].removeEventListener('click',selectionModule.p1battleShip) 
             cells[i].addEventListener('click',battleship) 
-            cells[i].addEventListener('click',pb2) 
+            cells[i].addEventListener('click',selectionModule.p1cruiserShip) 
             cells[i].addEventListener('mouseover',domModule.hover)
         cells[i].addEventListener('mouseleave',domModule.leave)
         }
     }
+
+    function p1cruiserShip(){
+        
+        let cells = document.querySelectorAll(".cell")
+        
+        //sq is controlling the highlighting number
+        sq=4;
+        for(let i=0;i<cells.length;i++){
+            cells[i].removeEventListener('click',battleship) 
+            cells[i].removeEventListener('click',selectionModule.p1cruiserShip) 
+            cells[i].addEventListener('click',cruiser) 
+            cells[i].addEventListener('click',selectionModule.p1submarineShip) 
+            cells[i].addEventListener('mouseover',domModule.hover)
+        cells[i].addEventListener('mouseleave',domModule.leave)
+        }
+    }
+
+    function p1submarineShip(){
+        
+        let cells = document.querySelectorAll(".cell")
+        
+        //sq is controlling the highlighting number
+        sq=5;
+        for(let i=0;i<cells.length;i++){
+            cells[i].removeEventListener('click',cruiser) 
+            cells[i].removeEventListener('click',selectionModule.p1submarineShip) 
+            cells[i].addEventListener('click',submarine) 
+            cells[i].addEventListener('click',selectionModule.p1destroyerShip) 
+            cells[i].addEventListener('mouseover',domModule.hover)
+        cells[i].addEventListener('mouseleave',domModule.leave)
+        }
+    }
+
+    function p1destroyerShip(){
+        
+        let cells = document.querySelectorAll(".cell")
+        
+        //sq is controlling the highlighting number
+        sq=6;
+        for(let i=0;i<cells.length;i++){
+            cells[i].removeEventListener('click',submarine) 
+            cells[i].removeEventListener('click',selectionModule.p1destroyerShip) 
+            cells[i].addEventListener('click',destroyer) 
+            //this decides whether the game starts after player two or the computer has selected their grids
+            //if not it loops around
+            if(pip === playerBase[1]){cells[i].addEventListener('click',startGame)}
+       else if(pip === playerBase[0]){cells[i].addEventListener('click',selectionModule.loop) }
+            
+            cells[i].addEventListener('mouseover',domModule.hover)
+        cells[i].addEventListener('mouseleave',domModule.leave)
+        }
+    }
+
+    function loop(){
+
+        //This function turns the selection process over to either a computer or player 2
+    //just doing player 2 implemetation for now
+    chanPlayer();
+        let cells = document.querySelectorAll(".cell")
     
-        return{p1carrierShip,p1battleShip}
+        for(let i=0;i<cells.length;i++){
+            cells[i].removeEventListener('click',destroyer) 
+            cells[i].removeEventListener('click',selectionModule.loop) 
+            cells[i].style.backgroundColor = "white";
+    }
+selectionModule.p1carrierShip();
+}
+
+
+    
+        return{p1carrierShip,p1battleShip,p1cruiserShip,p1submarineShip,p1destroyerShip,loop}
     
     })();
 

@@ -8,6 +8,8 @@ function shipfactory(name,coordinates){
     
   }
 
+  let coordid;
+
 
   const carrier = (t) =>{    
     t.target.style.backgroundColor = "red";
@@ -16,13 +18,13 @@ function shipfactory(name,coordinates){
     //alert("Your battleship will have the coordinates: "+chooseCrdnts(letter,number,??,direction))
     let gunn = new shipfactory("Carrier",chooseCrdnts(letter,number,2,direction))
     let PC;
-    if(pip === playerBase[0]){PC = player1coord;}
-    else if(pip === playerBase[1]){PC = player2coord;}
+    if(pip === playerBase[0]){PC = player1coord; coordid = "p1c"}
+    else if(pip === playerBase[1]){PC = player2coord; coordid = "p2c"}
     PC.push(gunn);
         
       let p = document.createElement("p")
       p.textContent = 'Carrier' +"-"+ chooseCrdnts(letter,number,2,direction)
-      document.getElementById("p1c").appendChild(p);
+      document.getElementById(coordid).appendChild(p);
     
     return PC;
     }
@@ -34,19 +36,72 @@ function shipfactory(name,coordinates){
     //alert("Your battleship will have the coordinates: "+chooseCrdnts(letter,number,??,direction))
     let gunn = new shipfactory("Battleship",chooseCrdnts(letter,number,3,direction))
     let PC;
-    if(pip === playerBase[0]){PC = player1coord;}
-    else if(pip === playerBase[1]){PC = player2coord;}
+    if(pip === playerBase[0]){PC = player1coord; coordid = "p1c"}
+    else if(pip === playerBase[1]){PC = player2coord; coordid = "p2c"}
     PC.push(gunn);
-    chanPlayer();
+    
 
     let p = document.createElement("p")
       p.textContent = 'BattleShip' +"-"+ chooseCrdnts(letter,number,3,direction)
-      document.getElementById("p1c").appendChild(p);
+      document.getElementById(coordid).appendChild(p);
     
     return PC;
   }
-  const cruiser = () =>{}
-  const submarine = () =>{}
-  const destroyer = () =>{}
+  const cruiser = (t) =>{
+    t.target.style.backgroundColor = "red";
+    let letter = t.target.dataset.letter;
+    let number = t.target.dataset.number;
+    //alert("Your battleship will have the coordinates: "+chooseCrdnts(letter,number,??,direction))
+    let gunn = new shipfactory("Cruiser",chooseCrdnts(letter,number,4,direction))
+    let PC;
+    if(pip === playerBase[0]){PC = player1coord; coordid = "p1c"}
+    else if(pip === playerBase[1]){PC = player2coord; coordid = "p2c"}
+    PC.push(gunn);
+    
 
-  export {shipfactory,carrier,battleship}
+    let p = document.createElement("p")
+      p.textContent = 'Cruiser' +"-"+ chooseCrdnts(letter,number,4,direction)
+      document.getElementById(coordid).appendChild(p);
+    
+    return PC;
+  }
+  const submarine = (t) =>{
+    t.target.style.backgroundColor = "red";
+    let letter = t.target.dataset.letter;
+    let number = t.target.dataset.number;
+    //alert("Your battleship will have the coordinates: "+chooseCrdnts(letter,number,??,direction))
+    let gunn = new shipfactory("Submarine",chooseCrdnts(letter,number,5,direction))
+    let PC;
+    if(pip === playerBase[0]){PC = player1coord; coordid = "p1c"}
+    else if(pip === playerBase[1]){PC = player2coord; coordid = "p2c"}
+    PC.push(gunn);
+    
+
+    let p = document.createElement("p")
+      p.textContent = 'Submarine' +"-"+ chooseCrdnts(letter,number,5,direction)
+      document.getElementById(coordid).appendChild(p);
+    
+    return PC;
+  }
+  const destroyer = (t) =>{
+    t.target.style.backgroundColor = "red";
+    let letter = t.target.dataset.letter;
+    let number = t.target.dataset.number;
+    //alert("Your battleship will have the coordinates: "+chooseCrdnts(letter,number,??,direction))
+    let gunn = new shipfactory("Destroyer",chooseCrdnts(letter,number,6,direction))
+    let PC;
+    if(pip === playerBase[0]){PC = player1coord; coordid = "p1c"}
+    else if(pip === playerBase[1]){PC = player2coord; coordid = "p2c"}
+    PC.push(gunn);
+
+    
+    
+
+    let p = document.createElement("p")
+      p.textContent = 'Destroyer' +"-"+ chooseCrdnts(letter,number,6,direction)
+      document.getElementById(coordid).appendChild(p);
+    
+    return PC;
+  }
+
+  export {shipfactory,carrier,battleship,cruiser,submarine,destroyer}
