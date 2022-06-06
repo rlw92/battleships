@@ -32,13 +32,10 @@ const chanPlayer = ()=>{
 }
 
 
-//hit function for the main game loop
-//in future will mark thee square as hit not allowing the player to hit again
-//takes the coordinates out of the players array
+//below functions need to be grouped into a module
 
 function hit(t){console.log(t.target.dataset.letter);
     let PC = player1coord;
-    let SS = player1SunkShips;
     let L = t.target.dataset.letter;
     let N = t.target.dataset.number;
     let hitCoord = L+N;
@@ -67,7 +64,6 @@ function hit(t){console.log(t.target.dataset.letter);
 
 
  function gameOver(){
-    console.log("UNDER CONSTRUCTIOn")
     let count =0;
     let PC = player1coord;
     let plr;

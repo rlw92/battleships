@@ -9,14 +9,14 @@ if(direction==="V"){
     //building it so when the user selects a number it keeps it within the grid
     if(numb>over){numb = over}
 for(let i=0;i<sq;i++){
-document.getElementById(letterr+(+numb+i)).style.backgroundColor = "green"}}
+document.getElementById(letterr+(+numb+i)).style.backgroundColor = "grey"}}
 else if(direction==="H"){
     let LtrNumber =letterr.charCodeAt(0)
     let over = 75-sq;
     //building it so when the user selects a number it keeps it within the grid
     if(LtrNumber>over){LtrNumber = over}
     for(let i=0;i<sq;i++){
-    document.getElementById(String.fromCharCode(LtrNumber++) + numb).style.backgroundColor="green"}
+    document.getElementById(String.fromCharCode(LtrNumber++) + numb).style.backgroundColor="grey"}
 }
 }
 
