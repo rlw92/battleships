@@ -1,10 +1,13 @@
-import{pip,direction,player1coord,player2coord,playerBase,chanPlayer} from './index'
+import{pip,direction,player1coord,player2coord,playerBase} from './index'
 import{chooseCrdnts} from './chooseCoordinates'
+
 
 
 function shipfactory(name,coordinates){
     this.name = name
     this.coordinates = coordinates
+    this.hitShip = ()=>{alert("You struck the " + name + " ship")}
+    this.isSunk = () =>{if(coordinates.length===0){alert("You sunk the "+ name +" ship");}}
     
   }
 

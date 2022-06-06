@@ -4,12 +4,11 @@ import {domModule} from './dom'
 
 
 
-
-console.log("HI");
-
   //coordinates of each players ship, just for testing until we use multiple ships
   let player1coord=[];
   let player2coord=[];
+  let player1SunkShips=0;
+  let player2SunkShips=0;
   //V=Vertical, H=Horizontal
   let direction = "V"
   //player in play
@@ -38,7 +37,8 @@ const chanPlayer = ()=>{
 //takes the coordinates out of the players array
 
 function hit(t){console.log(t.target.dataset.letter);
-    /*let PC = player1coord;
+    let PC = player1coord;
+    let SS = player1SunkShips;
     let L = t.target.dataset.letter;
     let N = t.target.dataset.number;
     let hitCoord = L+N;
@@ -49,33 +49,35 @@ function hit(t){console.log(t.target.dataset.letter);
     
     if(pip === playerBase[0]){PC = player2coord;}
     else if(pip === playerBase[1]){PC = player1coord;}
-
-console.log(PC[2].coordinates)
-console.log(PC)
-for(let p=0;p<PC.length;p++){
-    console.log(PC[p])
-for(let i=0;i<PC[p].coordinates.length;i++){
-    if(PC[p].coordinates[i]===hitCoord){
-        alert("HIT");
+    for(let p=0;p<PC.length;p++){
+        for(let i=0;i<PC[p].coordinates.length;i++){
+        if(PC[p].coordinates[i]===hitCoord){
+            console.log(PC[p].coordinates)
+            PC[p].coordinates.splice(i,1)
+        PC[p].hitShip();
+        PC[p].isSunk();        
+        gameOver();
+        console.log(PC[p].coordinates)
+        console.log("Player one sunk ships: "+ player1SunkShips)  
+        console.log("Player two sunk ships: "+ player2SunkShips)  
         
-    PC[p].coordinates[i].splice(i,1);
-    
-    gameOver();
-    chanPlayer();
+        }}
     }
-    
-}
-}
-    chanPlayer();
-return PC
-*/
-}
+    chanPlayer();}
+
 
  function gameOver(){
-        console.log(player1coord[0])
-        if(player1coord[0].length === 0){alert("Player two wins");}
-        else if(player2coord[0].length === 0){alert("Player one wins")}
-        
+    console.log("UNDER CONSTRUCTIOn")
+    let count =0;
+    let PC = player1coord;
+    let plr;
+    if(pip === playerBase[0]){PC = player2coord; plr="Player One"}
+    else if(pip === playerBase[1]){PC = player1coord; plr="Player Two"}
+    for(let i =0;i<PC.length;i++){
+       if(PC[i].coordinates.length===0){++count}
+    }
+    console.log(count);
+    if(count===5){alert( plr+ " has won!")}
     }
     
 
@@ -223,7 +225,7 @@ selectionModule.p1carrierShip();
 
 
 
-export {sq,direction,pip,player1coord,player2coord,playerBase,chanPlayer}
+export {sq,direction,pip,player1coord,player2coord,playerBase,chanPlayer,player1SunkShips,player2SunkShips}
 
 
 

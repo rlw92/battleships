@@ -41,11 +41,11 @@ function hit(hitcoord,cd){
 
 }*/
 
-function hit(hitcoord,cd){
-    for(let p=0;p<cd.length;p++){
-    for(let i=0;i<cd[p].coordinates.length;i++){
-    if(cd[p].coordinates[i]===hitcoord){
-    cd[p].coordinates.splice(i,1)
+function hit(hitcoord,PC){
+    for(let p=0;p<PC.length;p++){
+    for(let i=0;i<PC[p].coordinates.length;i++){
+    if(PC[p].coordinates[i]===hitcoord){
+    PC[p].coordinates.splice(i,1)
     }}
 }}
 
