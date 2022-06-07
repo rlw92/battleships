@@ -19,6 +19,9 @@ import {domModule} from './dom'
   document.getElementById("pip").textContent = pip;
   //the squares that need highlighting for the dom
   let sq;
+
+
+  
   
 
 //button to change the positioning of the placement
@@ -27,9 +30,15 @@ document.getElementById("Chnge").addEventListener('click',()=>{if(direction==="V
 
 //function changes player
 const chanPlayer = ()=>{
-    if(pip === playerBase[0]){pip = playerBase[1]; document.getElementById("pip").textContent = pip;}
-    else if(pip === playerBase[1]){pip = playerBase[0];document.getElementById("pip").textContent = pip;}
-    else{pip = playerBase[0];document.getElementById("pip").textContent = pip;}
+    if(pip === playerBase[0]){pip = playerBase[1];
+        Pcrd = player2coord;
+        document.getElementById("pip").textContent = pip;}
+    else if(pip === playerBase[1]){pip = playerBase[0];
+        Pcrd = player1coord;
+        document.getElementById("pip").textContent = pip;}
+    else{pip = playerBase[0];
+        Pcrd=player2coord;
+        document.getElementById("pip").textContent = pip;}
 
 }
 
@@ -148,6 +157,7 @@ const selectionModule = (() =>{
     function p1cruiserShip(){
 
         if(Pcrd.length>1){
+            
         
         console.log(Pcrd)
         let cells = document.querySelectorAll(".cell")
