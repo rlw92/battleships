@@ -1,5 +1,6 @@
 import{pip,direction,player1coord,player2coord,playerBase} from './index'
 import{chooseCrdnts} from './chooseCoordinates'
+import{overLap} from './overLap'
 
 
 
@@ -23,8 +24,9 @@ function shipfactory(name,coordinates){
     let PC;
     if(pip === playerBase[0]){PC = player1coord; coordid = "p1c"}
     else if(pip === playerBase[1]){PC = player2coord; coordid = "p2c"}
+ 
     PC.push(gunn);
-        
+  
       let p = document.createElement("p")
       p.textContent = 'Carrier' +"-"+ chooseCrdnts(letter,number,2,direction)
       document.getElementById(coordid).appendChild(p);
@@ -41,13 +43,15 @@ function shipfactory(name,coordinates){
     let PC;
     if(pip === playerBase[0]){PC = player1coord; coordid = "p1c"}
     else if(pip === playerBase[1]){PC = player2coord; coordid = "p2c"}
+    if(overLap(PC,chooseCrdnts(letter,number,3,direction))==="Y"){alert("These tiles have already been assigned, please choose different tiles")}
+  else{ 
     PC.push(gunn);
     
 
     let p = document.createElement("p")
       p.textContent = 'BattleShip' +"-"+ chooseCrdnts(letter,number,3,direction)
       document.getElementById(coordid).appendChild(p);
-    
+  }
     return PC;
   }
   const cruiser = (t) =>{
@@ -59,13 +63,15 @@ function shipfactory(name,coordinates){
     let PC;
     if(pip === playerBase[0]){PC = player1coord; coordid = "p1c"}
     else if(pip === playerBase[1]){PC = player2coord; coordid = "p2c"}
+    if(overLap(PC,chooseCrdnts(letter,number,4,direction))==="Y"){alert("These tiles have already been assigned, please choose different tiles")}
+    else{ 
     PC.push(gunn);
     
 
     let p = document.createElement("p")
       p.textContent = 'Cruiser' +"-"+ chooseCrdnts(letter,number,4,direction)
       document.getElementById(coordid).appendChild(p);
-    
+    }
     return PC;
   }
   const submarine = (t) =>{
@@ -77,13 +83,15 @@ function shipfactory(name,coordinates){
     let PC;
     if(pip === playerBase[0]){PC = player1coord; coordid = "p1c"}
     else if(pip === playerBase[1]){PC = player2coord; coordid = "p2c"}
+    if(overLap(PC,chooseCrdnts(letter,number,5,direction))==="Y"){alert("These tiles have already been assigned, please choose different tiles")}
+    else{ 
     PC.push(gunn);
     
 
     let p = document.createElement("p")
       p.textContent = 'Submarine' +"-"+ chooseCrdnts(letter,number,5,direction)
       document.getElementById(coordid).appendChild(p);
-    
+    }
     return PC;
   }
   const destroyer = (t) =>{
@@ -95,6 +103,8 @@ function shipfactory(name,coordinates){
     let PC;
     if(pip === playerBase[0]){PC = player1coord; coordid = "p1c"}
     else if(pip === playerBase[1]){PC = player2coord; coordid = "p2c"}
+    if(overLap(PC,chooseCrdnts(letter,number,6,direction))==="Y"){alert("These tiles have already been assigned, please choose different tiles")}
+    else{ 
     PC.push(gunn);
 
     
@@ -103,7 +113,7 @@ function shipfactory(name,coordinates){
     let p = document.createElement("p")
       p.textContent = 'Destroyer' +"-"+ chooseCrdnts(letter,number,6,direction)
       document.getElementById(coordid).appendChild(p);
-    
+    }
     return PC;
   }
 

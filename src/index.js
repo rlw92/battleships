@@ -3,7 +3,6 @@ import {carrier,battleship,cruiser,submarine,destroyer} from './ships'
 import {domModule} from './dom'
 
 
-
   //coordinates of each players ship, just for testing until we use multiple ships
   let player1coord=[];
   let player2coord=[];
