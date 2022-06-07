@@ -13,6 +13,9 @@ import {domModule} from './dom'
   //player in play
   let playerBase = ["player1","player2"];
   let pip = playerBase[0];
+  let Pcrd = player1coord;
+  if(pip === playerBase[0]){Pcrd = player1coord;}
+  else if(pip === playerBase[1]){Pcrd = player2coord;}
   document.getElementById("pip").textContent = pip;
   //the squares that need highlighting for the dom
   let sq;
@@ -123,7 +126,7 @@ const selectionModule = (() =>{
         cells[i].addEventListener('mouseleave',domModule.leave)
         }
         }
-    function p1battleShip(){    
+    function p1battleShip(){   
         
         let cells = document.querySelectorAll(".cell")
         
@@ -138,12 +141,15 @@ const selectionModule = (() =>{
             cells[i].addEventListener('mouseover',domModule.hover)
         cells[i].addEventListener('mouseleave',domModule.leave)
         }
-    
+        
     }
     
 
     function p1cruiserShip(){
 
+        if(Pcrd.length>1){
+        
+        console.log(Pcrd)
         let cells = document.querySelectorAll(".cell")
         
         //sq is controlling the highlighting number
@@ -157,8 +163,11 @@ const selectionModule = (() =>{
         cells[i].addEventListener('mouseleave',domModule.leave)
         }
     }
+    }
 
     function p1submarineShip(){
+
+        if(Pcrd.length>2){
         
         let cells = document.querySelectorAll(".cell")
         
@@ -173,8 +182,11 @@ const selectionModule = (() =>{
         cells[i].addEventListener('mouseleave',domModule.leave)
         }
     }
+    }
 
     function p1destroyerShip(){
+
+        if(Pcrd.length>3){
         let cells = document.querySelectorAll(".cell")
         
         //sq is controlling the highlighting number
@@ -192,8 +204,10 @@ const selectionModule = (() =>{
         cells[i].addEventListener('mouseleave',domModule.leave)
         }
     }
+    }
 
     function loop(){
+        if(Pcrd.length>4){
 
         //This function turns the selection process over to either a computer or player 2
     //just doing player 2 implemetation for now
@@ -207,6 +221,7 @@ const selectionModule = (() =>{
     }
 selectionModule.p1carrierShip();
 }
+    }
 
 
     
