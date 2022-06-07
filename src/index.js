@@ -106,12 +106,13 @@ cells[i].addEventListener('mouseleave',(t)=>{t.target.style.backgroundColor="whi
 
 //Selection module
 const selectionModule = (() =>{
+    
+    
 
         
     //adds an event listener to every grid cell allowing us to choose our coordinates,map them to the array then change player
     function p1carrierShip(){
        
-        GameboardModule.createGameboard();
         let cells = document.querySelectorAll(".cell")
         //sq is controlling the highlighting number
         sq=2;
@@ -122,7 +123,7 @@ const selectionModule = (() =>{
         cells[i].addEventListener('mouseleave',domModule.leave)
         }
         }
-    function p1battleShip(){
+    function p1battleShip(){    
         
         let cells = document.querySelectorAll(".cell")
         
@@ -132,14 +133,17 @@ const selectionModule = (() =>{
             cells[i].removeEventListener('click',carrier) 
             cells[i].removeEventListener('click',selectionModule.p1battleShip) 
             cells[i].addEventListener('click',battleship) 
+            //if coordinates match length needed move onto next part
             cells[i].addEventListener('click',selectionModule.p1cruiserShip) 
             cells[i].addEventListener('mouseover',domModule.hover)
         cells[i].addEventListener('mouseleave',domModule.leave)
         }
+    
     }
+    
 
     function p1cruiserShip(){
-        
+
         let cells = document.querySelectorAll(".cell")
         
         //sq is controlling the highlighting number
@@ -171,7 +175,6 @@ const selectionModule = (() =>{
     }
 
     function p1destroyerShip(){
-        
         let cells = document.querySelectorAll(".cell")
         
         //sq is controlling the highlighting number
@@ -215,7 +218,7 @@ selectionModule.p1carrierShip();
 
 
 
-
+    GameboardModule.createGameboard();
 selectionModule.p1carrierShip();
 
 
