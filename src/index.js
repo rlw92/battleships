@@ -3,6 +3,9 @@ import {carrier,battleship,cruiser,submarine,destroyer} from './ships'
 import {domModule} from './dom'
 
 
+console.log("FUYOU")
+
+
   //coordinates of each players ship, just for testing until we use multiple ships
   let player1coord=[];
   let player2coord=[];
@@ -52,8 +55,8 @@ function hit(t){console.log(t.target.dataset.letter);
     let hitCoord = L+N;
     console.log(hitCoord);
     console.log(PC.length);
-    
-    
+    if(N==="0"){console.log("Stay in the grid.")}
+    else{   
     
     if(pip === playerBase[0]){PC = player2coord;}
     else if(pip === playerBase[1]){PC = player1coord;}
@@ -71,7 +74,7 @@ function hit(t){console.log(t.target.dataset.letter);
         
         }}
     }
-    chanPlayer();}
+    chanPlayer()} }
 
 
  function gameOver(){
@@ -89,6 +92,7 @@ function hit(t){console.log(t.target.dataset.letter);
     
 
 function startGame(){
+    if(Pcrd.length>4){
     sq=1
     chanPlayer();
     let cells= document.querySelectorAll(".cell");
@@ -97,7 +101,7 @@ for(let i=0;i<cells.length;i++){
 cells[i].removeEventListener('click',startGame)
 cells[i].style.backgroundColor = "white";
 }
-playGame();}
+playGame()}}
     
     
 function playGame(){
@@ -107,7 +111,7 @@ for(let i=0;i<cells.length;i++){
 
 cells[i].addEventListener('click',hit)
 cells[i].style.backgroundColor = "white";
-cells[i].addEventListener('mouseover',(t)=>{t.target.style.backgroundColor="red"})
+cells[i].addEventListener('mouseover',(t)=>{if(t.target.dataset.number==="0"){t.target.style.backgroundColor="white"}else{t.target.style.backgroundColor="red"}})
 cells[i].addEventListener('mouseleave',(t)=>{t.target.style.backgroundColor="white"})
 }
 
@@ -136,6 +140,8 @@ const selectionModule = (() =>{
         }
         }
     function p1battleShip(){   
+
+        if(Pcrd.length>0){
         
         let cells = document.querySelectorAll(".cell")
         
@@ -150,7 +156,7 @@ const selectionModule = (() =>{
             cells[i].addEventListener('mouseover',domModule.hover)
         cells[i].addEventListener('mouseleave',domModule.leave)
         }
-        
+        }
     }
     
 

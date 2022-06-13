@@ -1,15 +1,19 @@
 import {sq,direction,player1coord,player2coord} from './index'
 const domModule = (() =>{
 //function for highlighting squares when hovering
-function hover(t){t.target.style.backgroundColor="green";
+function hover(t){
 let numb = t.target.dataset.number;
-let letterr = t.target.dataset.letter
+let letterr = t.target.dataset.letter;
+let color = "blue";
+
 if(direction==="V"){
     let over = 11-sq;
     //building it so when the user selects a number it keeps it within the grid
     if(numb>over){numb = over}
+    if(numb==="0"){color = "white"}
+    else{color="grey"}
 for(let i=0;i<sq;i++){
-document.getElementById(letterr+(+numb+i)).style.backgroundColor = "grey"}}
+document.getElementById(letterr+(+numb+i)).style.backgroundColor = color}}
 else if(direction==="H"){
     let LtrNumber =letterr.charCodeAt(0)
     let over = 75-sq;
