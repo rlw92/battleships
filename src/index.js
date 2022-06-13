@@ -1,6 +1,7 @@
 import {GameboardModule} from './gameboard'
 import {carrier,battleship,cruiser,submarine,destroyer} from './ships'
 import {domModule} from './dom'
+import {modalModule} from './modal'
 
 
   //coordinates of each players ship
@@ -32,10 +33,11 @@ import {domModule} from './dom'
 //button to change the positioning of the placement
 document.getElementById("Chnge").addEventListener('click',()=>{if(direction==="V"){direction="H";document.getElementById("position").textContent="Horizontal";}else if(direction==="H"){direction="V";document.getElementById("position").textContent="Vertical"}})
 //attackboard button that shows positions where the player has attacked
-document.getElementById("shwshipos").addEventListener('click',domModule.attackBoard)
+document.getElementById("shwshipos").addEventListener('click',modalModule.showModule)
 
 //function changes player
 const chanPlayer = ()=>{
+    modalModule.showModule();
     if(pip === playerBase[0]){pip = playerBase[1];
         Pcrd = player2coord;
         document.getElementById("pip").textContent = pip;}
@@ -265,9 +267,9 @@ selectionModule.p1carrierShip();
 
 
     GameboardModule.createGameboard();
-//selectionModule.p1carrierShip();
+selectionModule.p1carrierShip();
 //testing hit function
-playGame();
+//playGame();
 
 
 export {Phit,sq,direction,pip,player1coord,player2coord,playerBase,chanPlayer,player1SunkShips,player2SunkShips,player1strikes,player2strikes}
