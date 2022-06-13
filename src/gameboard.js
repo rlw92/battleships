@@ -18,7 +18,8 @@ const GameboardModule = (() => {
     if(id===0 && ltr==="0"){grid.textContent = no}
     else if(no===0 && ltr!="0"){grid.textContent = ltr}
     grid.dataset.hit = "No"
-    let grdata = grid.dataset.hit;
+    grid.dataset.P1hit="N"
+    grid.dataset.P2hit="N"
     let letter = grid.dataset.letter = ltr;
     let number = grid.dataset.number = no;
     //shows which player owns the cell//

@@ -3,14 +3,15 @@ import {carrier,battleship,cruiser,submarine,destroyer} from './ships'
 import {domModule} from './dom'
 
 
-console.log("FUYOU")
-
-
-  //coordinates of each players ship, just for testing until we use multiple ships
+  //coordinates of each players ship
   let player1coord=[];
   let player2coord=[];
+  //amount of sunk ships determining whether the game is over or not
   let player1SunkShips=0;
   let player2SunkShips=0;
+  //coordinates of each tile hit by each player
+  let player1strikes=[]
+  let player2strikes=[]
   //V=Vertical, H=Horizontal
   let direction = "V"
   //player in play
@@ -22,6 +23,7 @@ console.log("FUYOU")
   document.getElementById("pip").textContent = pip;
   //the squares that need highlighting for the dom
   let sq;
+  let Phit;
 
 
   
@@ -29,7 +31,8 @@ console.log("FUYOU")
 
 //button to change the positioning of the placement
 document.getElementById("Chnge").addEventListener('click',()=>{if(direction==="V"){direction="H";document.getElementById("position").textContent="Horizontal";}else if(direction==="H"){direction="V";document.getElementById("position").textContent="Vertical"}})
-
+//attackboard button that shows positions where the player has attacked
+document.getElementById("shwshipos").addEventListener('click',domModule.attackBoard)
 
 //function changes player
 const chanPlayer = ()=>{
@@ -42,6 +45,8 @@ const chanPlayer = ()=>{
     else{pip = playerBase[0];
         Pcrd=player2coord;
         document.getElementById("pip").textContent = pip;}
+        domModule.whiteOut();
+        domModule.attackBoard();
 
 }
 
@@ -50,31 +55,35 @@ const chanPlayer = ()=>{
 
 function hit(t){console.log(t.target.dataset.letter);
     let PC = player1coord;
+    let strike = player1strikes;
     let L = t.target.dataset.letter;
     let N = t.target.dataset.number;
-    let hitCoord = L+N;
+     let hitCoord = L+N;
     console.log(hitCoord);
     console.log(PC.length);
     if(N==="0"){console.log("Stay in the grid.")}
-    else{   
-    
-    if(pip === playerBase[0]){PC = player2coord;}
-    else if(pip === playerBase[1]){PC = player1coord;}
+    else{       
+    if(pip === playerBase[0]){PC = player2coord;strike=player1strikes;Phit=t.target.dataset.P1hit="Y"}
+    else if(pip === playerBase[1]){PC = player1coord;strike=player2strikes;Phit=t.target.dataset.P2hit="Y"}
     for(let p=0;p<PC.length;p++){
         for(let i=0;i<PC[p].coordinates.length;i++){
         if(PC[p].coordinates[i]===hitCoord){
             console.log(PC[p].coordinates)
             PC[p].coordinates.splice(i,1)
         PC[p].hitShip();
-        PC[p].isSunk();        
+        PC[p].isSunk();    
+        
         gameOver();
         console.log(PC[p].coordinates)
         console.log("Player one sunk ships: "+ player1SunkShips)  
         console.log("Player two sunk ships: "+ player2SunkShips)  
         
         }}
-    }
-    chanPlayer()} }
+    }strike.push(hitCoord)    
+        console.log("P1 strikes: "+ player1strikes)
+        console.log("P2 strikes: "+ player2strikes)
+        
+    chanPlayer()}}
 
 
  function gameOver(){
@@ -100,6 +109,7 @@ for(let i=0;i<cells.length;i++){
     cells[i].removeEventListener('click',destroyer) 
 cells[i].removeEventListener('click',startGame)
 cells[i].style.backgroundColor = "white";
+document.getElementById("ingamebuttons").style.display = "block";
 }
 playGame()}}
     
@@ -111,12 +121,12 @@ for(let i=0;i<cells.length;i++){
 
 cells[i].addEventListener('click',hit)
 cells[i].style.backgroundColor = "white";
-cells[i].addEventListener('mouseover',(t)=>{if(t.target.dataset.number==="0"){t.target.style.backgroundColor="white"}else{t.target.style.backgroundColor="red"}})
-cells[i].addEventListener('mouseleave',(t)=>{t.target.style.backgroundColor="white"})
-}
+cells[i].addEventListener('mouseover',domModule.hitHover)
+cells[i].addEventListener('mouseleave',domModule.hitLeave)
+
 
 }
-
+}
 
 
 
@@ -250,11 +260,12 @@ selectionModule.p1carrierShip();
 
 
     GameboardModule.createGameboard();
-selectionModule.p1carrierShip();
+//selectionModule.p1carrierShip();
+//testing hit function
+playGame();
 
 
-
-export {sq,direction,pip,player1coord,player2coord,playerBase,chanPlayer,player1SunkShips,player2SunkShips}
+export {Phit,sq,direction,pip,player1coord,player2coord,playerBase,chanPlayer,player1SunkShips,player2SunkShips,player1strikes,player2strikes}
 
 
 
