@@ -60,11 +60,14 @@ function hit(t){console.log(t.target.dataset.letter);
     let N = t.target.dataset.number;
      let hitCoord = L+N;
     console.log(hitCoord);
-    console.log(PC.length);
+    console.log(PC.length); 
+    if(pip === playerBase[0]){PC = player2coord;strike=player1strikes;Phit=t.target.dataset.P1hit}
+    else if(pip === playerBase[1]){PC = player1coord;strike=player2strikes;Phit=t.target.dataset.P2hit}
     if(N==="0"){console.log("Stay in the grid.")}
+    else if(Phit==="Y"){console.log("Already been hit, try again.")}
     else{       
-    if(pip === playerBase[0]){PC = player2coord;strike=player1strikes;Phit=t.target.dataset.P1hit="Y"}
-    else if(pip === playerBase[1]){PC = player1coord;strike=player2strikes;Phit=t.target.dataset.P2hit="Y"}
+        if(pip === playerBase[0]){PC = player2coord;strike=player1strikes;Phit=t.target.dataset.P1hit="Y"}
+        else if(pip === playerBase[1]){PC = player1coord;strike=player2strikes;Phit=t.target.dataset.P2hit="Y"}
     for(let p=0;p<PC.length;p++){
         for(let i=0;i<PC[p].coordinates.length;i++){
         if(PC[p].coordinates[i]===hitCoord){
@@ -262,9 +265,9 @@ selectionModule.p1carrierShip();
 
 
     GameboardModule.createGameboard();
-selectionModule.p1carrierShip();
+//selectionModule.p1carrierShip();
 //testing hit function
-//playGame();
+playGame();
 
 
 export {Phit,sq,direction,pip,player1coord,player2coord,playerBase,chanPlayer,player1SunkShips,player2SunkShips,player1strikes,player2strikes}
