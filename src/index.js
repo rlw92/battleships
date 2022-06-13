@@ -121,6 +121,8 @@ for(let i=0;i<cells.length;i++){
 
 cells[i].addEventListener('click',hit)
 cells[i].style.backgroundColor = "white";
+cells[i].removeEventListener('mouseover',domModule.hover)
+cells[i].removeEventListener('mouseleave',domModule.leave)
 cells[i].addEventListener('mouseover',domModule.hitHover)
 cells[i].addEventListener('mouseleave',domModule.hitLeave)
 
@@ -260,9 +262,9 @@ selectionModule.p1carrierShip();
 
 
     GameboardModule.createGameboard();
-//selectionModule.p1carrierShip();
+selectionModule.p1carrierShip();
 //testing hit function
-playGame();
+//playGame();
 
 
 export {Phit,sq,direction,pip,player1coord,player2coord,playerBase,chanPlayer,player1SunkShips,player2SunkShips,player1strikes,player2strikes}

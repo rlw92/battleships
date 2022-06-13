@@ -30,14 +30,13 @@ let numb = t.target.dataset.number;
 let letterr = t.target.dataset.letter;
 let hit = letterr+numb;
 console.log(hit);
-color="white"
 
 if(direction==="V"){
     let over = 11-sq;
     //building it so when the user selects a number it keeps it within the grid
     if(numb>over){numb = over}
     for(let i=0;i<sq;i++){
-    document.getElementById(letterr+(+numb+i)).style.backgroundColor = color}}
+    document.getElementById(letterr+(+numb+i)).style.backgroundColor = "white"}}
     else if(direction==="H"){
         let LtrNumber =letterr.charCodeAt(0)
         let over = 75-sq;
@@ -45,7 +44,7 @@ if(direction==="V"){
     //building it so when the user selects a number it keeps it within the grid
     if(LtrNumber>over){LtrNumber = over}
         for(let i=0;i<sq;i++){
-        document.getElementById(String.fromCharCode(LtrNumber++) + numb).style.backgroundColor=color}
+        document.getElementById(String.fromCharCode(LtrNumber++) + numb).style.backgroundColor="white"}
     }
 
     
