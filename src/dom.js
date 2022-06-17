@@ -50,20 +50,7 @@ if(direction==="V"){
     
     }
 
-    //remember to implement this before finishing up the project
-    //***
-    function showCoordp(){
-    for(let i=0;i<player1coord.length;i++){
-        let p = document.createElement("p")
-        p.textContent = player1coord[i].name +'-'+player1coord[i].coordinates;
-        document.getElementById("p1c").appendChild(p);
-      }
-
-      for(let i=0;i<player2coord.length;i++){
-        let p = document.createElement("p")
-        p.textContent = player2coord[i].name +'-'+player2coord[i].coordinates;
-        document.getElementById("p2c").appendChild(p);
-      }}
+    
    
       //function that allows us to update tiles without carrying previous tiles over
       function whiteOut(){
@@ -84,7 +71,17 @@ if(direction==="V"){
     }
 
     function playerBoard(){
-        
+        let show = player1coord;
+        if(pip === playerBase[0]){show=player1coord;console.log(show)}
+    else if(pip === playerBase[1]){show=player2coord; console.log(show)} 
+    for(let i=0;i<show.length;i++){
+        for(let ii=0;ii<show[i].coordinates.length;ii++){
+              document.getElementById(show[i].coordinates[ii]).style.backgroundColor="grey";
+            
+
+        }
+    }
+       
     }
 
     //functions for when the hit function is in play
@@ -102,7 +99,7 @@ if(direction==="V"){
         else if(Phit==="N"){t.target.style.backgroundColor = "white"}
     }
 
-return {hover,leave,showCoordp,attackBoard,whiteOut,hitHover,hitLeave}
+return {hover,leave,attackBoard,whiteOut,hitHover,hitLeave,playerBoard}
 })();
 
 

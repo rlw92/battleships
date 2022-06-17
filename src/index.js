@@ -33,7 +33,11 @@ import {modalModule} from './modal'
 //button to change the positioning of the placement
 document.getElementById("Chnge").addEventListener('click',()=>{if(direction==="V"){direction="H";document.getElementById("position").textContent="Horizontal";}else if(direction==="H"){direction="V";document.getElementById("position").textContent="Vertical"}})
 //attackboard button that shows positions where the player has attacked
-document.getElementById("shwshipos").addEventListener('click',modalModule.showModule)
+document.getElementById("shwshipos").addEventListener('mouseover',()=>{domModule.whiteOut();
+    domModule.playerBoard();
+    })
+document.getElementById("shwshipos").addEventListener('mouseleave',()=>{domModule.whiteOut();
+    domModule.attackBoard();})
 
 //function changes player
 const chanPlayer = ()=>{
@@ -115,6 +119,8 @@ for(let i=0;i<cells.length;i++){
 cells[i].removeEventListener('click',startGame)
 cells[i].style.backgroundColor = "white";
 document.getElementById("ingamebuttons").style.display = "block";
+document.getElementById("positionPara").style.display = "none";
+document.getElementById("Chnge").style.display = "none";
 }
 playGame()}}
     
@@ -270,6 +276,7 @@ selectionModule.p1carrierShip();
 selectionModule.p1carrierShip();
 //testing hit function
 //playGame();
+
 
 
 export {Phit,sq,direction,pip,player1coord,player2coord,playerBase,chanPlayer,player1SunkShips,player2SunkShips,player1strikes,player2strikes}

@@ -29,9 +29,7 @@ function shipfactory(name,coordinates){
  
     PC.push(gunn);
   
-      let p = document.createElement("p")
-      p.textContent = 'Carrier' +"-"+ chooseCrdnts(letter,number,2,direction)
-      document.getElementById(coordid).appendChild(p);
+      
     }
     return PC;
     }
@@ -52,9 +50,7 @@ function shipfactory(name,coordinates){
     PC.push(gunn);
     
 
-    let p = document.createElement("p")
-      p.textContent = 'BattleShip' +"-"+ chooseCrdnts(letter,number,3,direction)
-      document.getElementById(coordid).appendChild(p);
+    
   }}
     return PC;
   }
@@ -74,9 +70,7 @@ function shipfactory(name,coordinates){
     PC.push(gunn);
     
 
-    let p = document.createElement("p")
-      p.textContent = 'Cruiser' +"-"+ chooseCrdnts(letter,number,4,direction)
-      document.getElementById(coordid).appendChild(p);
+    
     }}
     return PC;
   }
@@ -95,9 +89,7 @@ function shipfactory(name,coordinates){
     else{ 
     PC.push(gunn);
     
-    let p = document.createElement("p")
-      p.textContent = 'Submarine' +"-"+ chooseCrdnts(letter,number,5,direction)
-      document.getElementById(coordid).appendChild(p);
+    
     }}
     return PC;
   }
@@ -116,9 +108,7 @@ function shipfactory(name,coordinates){
     else{ 
     PC.push(gunn);
 
-    let p = document.createElement("p")
-      p.textContent = 'Destroyer' +"-"+ chooseCrdnts(letter,number,6,direction)
-      document.getElementById(coordid).appendChild(p);
+    
     }}
     return PC;
   }
