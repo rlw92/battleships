@@ -2,8 +2,10 @@ import {GameboardModule} from './gameboard'
 import {carrier,battleship,cruiser,submarine,destroyer} from './ships'
 import {domModule} from './dom'
 import {modalModule} from './modal'
+import {computerAI} from './computerAI'
 
-
+//computer in play
+let cip = "N"
   //coordinates of each players ship
   let player1coord=[];
   let player2coord=[];
@@ -163,7 +165,7 @@ const selectionModule = (() =>{
         }
         }
     function p1battleShip(){   
-
+        
         if(Pcrd.length>0){
         
         let cells = document.querySelectorAll(".cell")
@@ -248,6 +250,9 @@ const selectionModule = (() =>{
     function loop(){
         if(Pcrd.length>4){
 
+            if(cip==="Y"){computerAI.selectCarrier();}
+            else{
+
         //This function turns the selection process over to either a computer or player 2
     //just doing player 2 implemetation for now
     chanPlayer();
@@ -260,7 +265,7 @@ const selectionModule = (() =>{
     }
 selectionModule.p1carrierShip();
 }
-    }
+    }}
 
 
     
@@ -271,7 +276,7 @@ selectionModule.p1carrierShip();
 
 
 
-
+   modalModule.playerSelect();
     GameboardModule.createGameboard();
 selectionModule.p1carrierShip();
 //testing hit function
@@ -279,7 +284,7 @@ selectionModule.p1carrierShip();
 
 
 
-export {Phit,sq,direction,pip,player1coord,player2coord,playerBase,chanPlayer,player1SunkShips,player2SunkShips,player1strikes,player2strikes}
+export {startGame,selectionModule,cip,Phit,sq,direction,pip,player1coord,player2coord,playerBase,chanPlayer,player1SunkShips,player2SunkShips,player1strikes,player2strikes}
 
 
 
