@@ -75,7 +75,7 @@ function playerSelect(){
 function compHitModal(){
 
   modal.style.display = "block";
-  para1.textContent = "Please click the button below to activate the AI choice?"
+  para1.textContent = "Please click the button below to activate the AI choice!"
   btn.style.display = "none";
   compHit.style.display = "block";
   document.querySelector(".close").style.display = "none"

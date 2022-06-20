@@ -42,7 +42,7 @@ document.getElementById("shwshipos").addEventListener('mouseover',()=>{domModule
 document.getElementById("shwshipos").addEventListener('mouseleave',()=>{domModule.whiteOut();
     domModule.attackBoard();})
 
-   //console.log("HEYEE")
+   console.log("HEYEE")
 //function changes player
 const chanPlayer = ()=>{
     let t;
@@ -85,6 +85,8 @@ function hit(t){console.log(t.target.dataset.letter);
     
   L = String.fromCharCode(computerAI.randomIntFromInterval(65,74));
   N = Math.floor((Math.random() * 10) + 1);
+  
+  
     alert("Computer has struck Tile: "+L+N)
     }
     else{
@@ -96,9 +98,10 @@ function hit(t){console.log(t.target.dataset.letter);
     console.log(hitCoord);
     console.log(PC.length); 
     if(pip === playerBase[0]){PC = player2coord;strike=player1strikes;Phit=t.target.dataset.P1hit}
-    else if(pip === playerBase[1]){PC = player1coord;strike=player2strikes;Phit=t.target.dataset.P2hit}
+    else if(pip === playerBase[1] && cip!="Y"){PC = player1coord;strike=player2strikes;Phit=t.target.dataset.P2hit}
+    else if(pip === playerBase[1] && cip==="Y"){PC = player1coord;strike=player2strikes;}
     if(N==="0"){console.log("Stay in the grid.")}
-    else if(Phit==="Y"&& cip!="Y"){console.log("Already been hit, try again.")}
+    else if(Phit==="Y"){console.log("Already been hit, try again.")}
     else{       
         if(pip === playerBase[0]){PC = player2coord;strike=player1strikes;Phit=t.target.dataset.P1hit="Y"}
         else if(pip === playerBase[1]){PC = player1coord;strike=player2strikes;Phit=t.target.dataset.P2hit="Y"}
