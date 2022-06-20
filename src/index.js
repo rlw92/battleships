@@ -112,7 +112,21 @@ function hit(t){console.log(t.target.dataset.letter);
     
 
 function startGame(){
-    if(Pcrd.length>4){
+    //number needs to be changed to 4
+    if(Pcrd.length>1){
+        if(cip==="Y"){
+            alert("TEST")
+            sq=1
+            
+            let cells= document.querySelectorAll(".cell");
+for(let i=0;i<cells.length;i++){
+cells[i].style.backgroundColor = "white";
+document.getElementById("ingamebuttons").style.display = "block";
+document.getElementById("positionPara").style.display = "none";
+document.getElementById("Chnge").style.display = "none";
+       } playGame();
+        }
+        else{
     sq=1
     chanPlayer();
     let cells= document.querySelectorAll(".cell");
@@ -124,7 +138,7 @@ document.getElementById("ingamebuttons").style.display = "block";
 document.getElementById("positionPara").style.display = "none";
 document.getElementById("Chnge").style.display = "none";
 }
-playGame()}}
+playGame()}}}
     
     
 function playGame(){
@@ -250,7 +264,17 @@ const selectionModule = (() =>{
     function loop(){
         if(Pcrd.length>4){
 
-            if(cip==="Y"){computerAI.selectCarrier();}
+            if(cip==="Y"){
+                chanPlayer();
+                let cells = document.querySelectorAll(".cell")
+    
+        for(let i=0;i<cells.length;i++){
+            cells[i].removeEventListener('click',destroyer) 
+            cells[i].removeEventListener('click',selectionModule.loop) 
+            cells[i].style.backgroundColor = "white";
+
+                }
+                computerAI.selectCarrier();}
             else{
 
         //This function turns the selection process over to either a computer or player 2
@@ -279,6 +303,7 @@ selectionModule.p1carrierShip();
    modalModule.playerSelect();
     GameboardModule.createGameboard();
 selectionModule.p1carrierShip();
+
 //testing hit function
 //playGame();
 
