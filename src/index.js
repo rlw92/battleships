@@ -64,13 +64,38 @@ t;
         domModule.attackBoard();
         }
     
+let rndtile;
+        function randomTile(){
+
+            let M;
+    let O;
+    
+    
+             //change second number back to the 74
+  M = String.fromCharCode(computerAI.randomIntFromInterval(65,74));
+  //change back to 10 in brackets
+  O = Math.floor((Math.random() * 1) + 1);
+
+  rndtile=M+O;
+
+  for(let i = 0;i<player2strikes.length;i++){
+      if(player2strikes[i]===M+O){alert("Been hit, computer, seek new tile! ")
+randomTile();
+                                }
+                                else {rndtile=M+O}
+
+  }
+
+  
+  return rndtile;
+        }
         
-console.log("Nnnnn")
+//console.log("Nnnnn")
 
 
 
 //below functions need to be grouped into a module
-console.log("INRST")
+//console.log("INRST")
 
 function hit(t){console.log(t.target.dataset.letter);
 
@@ -80,21 +105,21 @@ function hit(t){console.log(t.target.dataset.letter);
     let strike = player1strikes;
     let L;
     let N;
+    let hitCoord;
 
     if(cip==="Y"&&pip===playerBase[1]){alert("Computer is taking its hit")
     
-  L = String.fromCharCode(computerAI.randomIntFromInterval(65,74));
-  N = Math.floor((Math.random() * 10) + 1);
+   
+  console.log(randomTile())
+     hitCoord=randomTile();
   
-  
-    alert("Computer has struck Tile: "+L+N)
+    alert("Computer has struck Tile: "+hitCoord)
     }
     else{
     
     L = t.target.dataset.letter;
-    N = t.target.dataset.number;}
-
-     let hitCoord = L+N;
+    N = t.target.dataset.number;
+    hitCoord = L+N;}
     console.log(hitCoord);
     console.log(PC.length); 
     if(pip === playerBase[0]){PC = player2coord;strike=player1strikes;Phit=t.target.dataset.P1hit}
@@ -137,6 +162,7 @@ function hit(t){console.log(t.target.dataset.letter);
        if(PC[i].coordinates.length===0){++count}
     }
     console.log(count);
+    //change below count to 1 for a quick game
     if(count===5){alert( plr+ " has won!")}
     }
     
