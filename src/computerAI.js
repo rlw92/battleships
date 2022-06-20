@@ -126,7 +126,7 @@ else{
   
 }
 }
-return {selectCarrier,selectBattleship,selectCruiser,selectSubmarine,selectDestroyer}
+return {selectCarrier,selectBattleship,selectCruiser,selectSubmarine,selectDestroyer,randomIntFromInterval}
 })();
 
 

@@ -4,6 +4,7 @@ import {domModule} from './dom'
 import {modalModule} from './modal'
 import {computerAI} from './computerAI'
 
+
 //computer in play
 let cip = "N"
   //coordinates of each players ship
@@ -41,38 +42,63 @@ document.getElementById("shwshipos").addEventListener('mouseover',()=>{domModule
 document.getElementById("shwshipos").addEventListener('mouseleave',()=>{domModule.whiteOut();
     domModule.attackBoard();})
 
+   //console.log("HEYEE")
 //function changes player
 const chanPlayer = ()=>{
-    modalModule.showModule();
+    let t;
+if(cip==="Y"){      
+        t = modalModule.compHitModal();}
+        
+else{t = modalModule.showModule();}
+t;
     if(pip === playerBase[0]){pip = playerBase[1];
         Pcrd = player2coord;
         document.getElementById("pip").textContent = pip;}
     else if(pip === playerBase[1]){pip = playerBase[0];
         Pcrd = player1coord;
         document.getElementById("pip").textContent = pip;}
-    else{pip = playerBase[0];
+        else{pip = playerBase[0];
         Pcrd=player2coord;
         document.getElementById("pip").textContent = pip;}
         domModule.whiteOut();
         domModule.attackBoard();
+        }
+    
+        
+console.log("Nnnnn")
 
-}
 
 
 //below functions need to be grouped into a module
+console.log("INRST")
 
 function hit(t){console.log(t.target.dataset.letter);
+
+    console.log(pip)
+    
     let PC = player1coord;
     let strike = player1strikes;
-    let L = t.target.dataset.letter;
-    let N = t.target.dataset.number;
+    let L;
+    let N;
+
+    if(cip==="Y"&&pip===playerBase[1]){alert("Computer is taking its hit")
+    
+  L = String.fromCharCode(computerAI.randomIntFromInterval(65,74));
+  N = Math.floor((Math.random() * 10) + 1);
+    alert("Computer has struck Tile: "+L+N)
+    }
+    else{
+    
+    L = t.target.dataset.letter;
+    N = t.target.dataset.number;}
+
      let hitCoord = L+N;
     console.log(hitCoord);
     console.log(PC.length); 
     if(pip === playerBase[0]){PC = player2coord;strike=player1strikes;Phit=t.target.dataset.P1hit}
     else if(pip === playerBase[1]){PC = player1coord;strike=player2strikes;Phit=t.target.dataset.P2hit}
     if(N==="0"){console.log("Stay in the grid.")}
-    else if(Phit==="Y"){console.log("Already been hit, try again.")}
+    else if(Phit==="Y"&& cip!="Y"){console.log("Already been hit, try again.")}
     else{       
         if(pip === playerBase[0]){PC = player2coord;strike=player1strikes;Phit=t.target.dataset.P1hit="Y"}
         else if(pip === playerBase[1]){PC = player1coord;strike=player2strikes;Phit=t.target.dataset.P2hit="Y"}
@@ -94,7 +120,8 @@ function hit(t){console.log(t.target.dataset.letter);
         console.log("P1 strikes: "+ player1strikes)
         console.log("P2 strikes: "+ player2strikes)
         
-    chanPlayer()}}
+    chanPlayer()
+    }}
 
 
  function gameOver(){
@@ -112,12 +139,11 @@ function hit(t){console.log(t.target.dataset.letter);
     
 
 function startGame(){
-    //number needs to be changed to 4
-    if(Pcrd.length>1){
+    
+    if(Pcrd.length>4){
         if(cip==="Y"){
-            alert("TEST")
+            alert("Computer is choosing battle positions")
             sq=1
-            
             let cells= document.querySelectorAll(".cell");
 for(let i=0;i<cells.length;i++){
 cells[i].style.backgroundColor = "white";
@@ -265,7 +291,7 @@ const selectionModule = (() =>{
         if(Pcrd.length>4){
 
             if(cip==="Y"){
-                chanPlayer();
+                
                 let cells = document.querySelectorAll(".cell")
     
         for(let i=0;i<cells.length;i++){
@@ -309,7 +335,7 @@ selectionModule.p1carrierShip();
 
 
 
-export {startGame,selectionModule,cip,Phit,sq,direction,pip,player1coord,player2coord,playerBase,chanPlayer,player1SunkShips,player2SunkShips,player1strikes,player2strikes}
+export {hit,startGame,selectionModule,cip,Phit,sq,direction,pip,player1coord,player2coord,playerBase,chanPlayer,player1SunkShips,player2SunkShips,player1strikes,player2strikes}
 
 
 
