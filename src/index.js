@@ -73,13 +73,13 @@ t;
         domModule.attackBoard();
         }
     
-console.log("OIL")
+//console.log("OIL")
     console.log("Nnnnn")
 
 
 
 //below functions need to be grouped into a module
-//console.log("INRST")
+console.log("INRST")
 
 function hit(t){console.log(t.target.dataset.letter);
 
@@ -95,12 +95,7 @@ function hit(t){console.log(t.target.dataset.letter);
 
         hitCoord = computerAI.hit();
         
-        /*alert("Computer is taking its hit")
     
-   
-  console.log(randomTile())
-     hitCoord=randomTile();
-  */
     alert("Computer has struck Tile: "+hitCoord)
     
     }
@@ -151,7 +146,9 @@ function hit(t){console.log(t.target.dataset.letter);
        if(PC[i].coordinates.length===0){++count}
     }
     console.log(count);
-    //change below count to 1 for a quick game
+
+    //change below count to 1 for a quick game, 5 for a full game
+    //may be worth allowing players to change it before game to see what length of game they want to play
     if(count===5){alert( plr+ " has won!")}
     }
     

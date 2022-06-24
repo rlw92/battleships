@@ -24,7 +24,8 @@ const computerAI = (() =>{
   //testing below
   function targetArray(){
       for(let i=65;i<75;i++){
-          for(let o=1;o<11;o++){
+        //change back to 10 below
+          for(let o=1;o<2;o++){
               targetArrayy.push(String.fromCharCode(i) + o)
           }
       }
@@ -39,9 +40,11 @@ function randomIntFromInterval(min, max) { // min and max included
 
 function hit(){
           
-         let rNo = randomIntFromInterval(0, targetArrayy.length)
+         let rNo = randomIntFromInterval(0, targetArrayy.length-1)
          let fire = targetArrayy[rNo];
          targetArrayy.splice(rNo,1)
+        console.log("Random no: "+rNo)
+         console.log("Length: "+targetArrayy.length)
          console.log(targetArrayy)
          return fire
 

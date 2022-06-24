@@ -7,8 +7,8 @@ import{overLap} from './overLap'
 function shipfactory(name,coordinates){
     this.name = name
     this.coordinates = coordinates
-    this.hitShip = ()=>{alert("You struck the " + name + " ship")}
-    this.isSunk = () =>{if(coordinates.length===0){alert("You sunk the "+ name +" ship");}}
+    this.hitShip = ()=>{alert("Struck the " + name + " ship")}
+    this.isSunk = () =>{if(coordinates.length===0){alert("Sunk the "+ name +" ship");}}
     
   }
 
