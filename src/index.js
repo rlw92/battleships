@@ -28,6 +28,15 @@ let cip = "N"
   //the squares that need highlighting for the dom
   let sq;
   let Phit;
+  let targetArrayy = [];
+  
+  computerAI.targetArray();
+  console.log(targetArrayy)
+  
+  
+
+
+
 
 
   
@@ -64,33 +73,8 @@ t;
         domModule.attackBoard();
         }
     
-let rndtile;
-        function randomTile(){
-
-            let M;
-    let O;
-    
-    
-             //change second number back to the 74
-  M = String.fromCharCode(computerAI.randomIntFromInterval(65,74));
-  //change back to 10 in brackets
-  O = Math.floor((Math.random() * 1) + 1);
-
-  rndtile=M+O;
-
-  for(let i = 0;i<player2strikes.length;i++){
-      if(player2strikes[i]===M+O){alert("Been hit, computer, seek new tile! ")
-randomTile();
-                                }
-                                else {rndtile=M+O}
-
-  }
-
-  
-  return rndtile;
-        }
-        
-//console.log("Nnnnn")
+console.log("OIL")
+    console.log("Nnnnn")
 
 
 
@@ -107,13 +91,18 @@ function hit(t){console.log(t.target.dataset.letter);
     let N;
     let hitCoord;
 
-    if(cip==="Y"&&pip===playerBase[1]){alert("Computer is taking its hit")
+    if(cip==="Y"&&pip===playerBase[1]){
+
+        hitCoord = computerAI.hit();
+        
+        /*alert("Computer is taking its hit")
     
    
   console.log(randomTile())
      hitCoord=randomTile();
-  
+  */
     alert("Computer has struck Tile: "+hitCoord)
+    
     }
     else{
     
@@ -139,7 +128,7 @@ function hit(t){console.log(t.target.dataset.letter);
         PC[p].isSunk();    
         
         gameOver();
-        console.log(PC[p].coordinates)
+        
         console.log("Player one sunk ships: "+ player1SunkShips)  
         console.log("Player two sunk ships: "+ player2SunkShips)  
         
@@ -364,7 +353,7 @@ selectionModule.p1carrierShip();
 
 
 
-export {hit,startGame,selectionModule,cip,Phit,sq,direction,pip,player1coord,player2coord,playerBase,chanPlayer,player1SunkShips,player2SunkShips,player1strikes,player2strikes}
+export {targetArrayy,hit,startGame,selectionModule,cip,Phit,sq,direction,pip,player1coord,player2coord,playerBase,chanPlayer,player1SunkShips,player2SunkShips,player1strikes,player2strikes}
 
 
 

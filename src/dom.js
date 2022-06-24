@@ -64,7 +64,7 @@ if(direction==="V"){
         if(pip === playerBase[0]){strike=player1strikes}
     else if(pip === playerBase[1]){strike=player2strikes}    
     for(let i=0;i<strike.length;i++){
-        console.log(strike[i])
+        
         document.getElementById(strike[i]).style.backgroundColor = "red";
     }
 
@@ -94,7 +94,7 @@ if(direction==="V"){
     function hitLeave(t){
         if(pip === playerBase[0]){Phit=t.target.dataset.P1hit}
     else if(pip === playerBase[1]){Phit=t.target.dataset.P2hit}  
-    console.log(Phit)
+    
         if(Phit==="Y"){t.target.style.backgroundColor="red"}
         else if(Phit==="N"){t.target.style.backgroundColor = "white"}
     }

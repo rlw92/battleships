@@ -1,5 +1,5 @@
 import { chooseCrdnts } from "./chooseCoordinates";
-import { player2coord,startGame } from "./index"
+import { player1coord,player2coord,startGame,targetArrayy } from "./index"
 import { overLap } from "./overLap";
 import { shipfactory } from "./ships";
 
@@ -19,10 +19,32 @@ A more advanced AI would then be able to hit adjacent grids when it detects a hi
 
 const computerAI = (() =>{
 
+  
+
+  //testing below
+  function targetArray(){
+      for(let i=65;i<75;i++){
+          for(let o=1;o<11;o++){
+              targetArrayy.push(String.fromCharCode(i) + o)
+          }
+      }
+  }
+  
+
 
 
 function randomIntFromInterval(min, max) { // min and max included 
   return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
+function hit(){
+          
+         let rNo = randomIntFromInterval(0, targetArrayy.length)
+         let fire = targetArrayy[rNo];
+         targetArrayy.splice(rNo,1)
+         console.log(targetArrayy)
+         return fire
+
 }
 
 //work closely with ships.js to craft this
@@ -126,7 +148,7 @@ else{
   
 }
 }
-return {selectCarrier,selectBattleship,selectCruiser,selectSubmarine,selectDestroyer,randomIntFromInterval}
+return {hit,selectCarrier,selectBattleship,selectCruiser,selectSubmarine,selectDestroyer,randomIntFromInterval,targetArray}
 })();
 
 
