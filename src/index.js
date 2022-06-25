@@ -29,6 +29,8 @@ let cip = "N"
   let sq;
   let Phit;
   let targetArrayy = [];
+  let smartCounter = 0;
+  let rNo;
   
   computerAI.targetArray();
   console.log(targetArrayy)
@@ -51,7 +53,7 @@ document.getElementById("shwshipos").addEventListener('mouseover',()=>{domModule
 document.getElementById("shwshipos").addEventListener('mouseleave',()=>{domModule.whiteOut();
     domModule.attackBoard();})
 
-   console.log("HEYEE")
+   //console.log("HEYEE")
 //function changes player
 const chanPlayer = ()=>{
     let t;
@@ -73,7 +75,7 @@ t;
         domModule.attackBoard();
         }
     
-//console.log("OIL")
+console.log("OIL")
     console.log("Nnnnn")
 
 
@@ -127,14 +129,18 @@ function hit(t){console.log(t.target.dataset.letter);
         console.log("Player one sunk ships: "+ player1SunkShips)  
         console.log("Player two sunk ships: "+ player2SunkShips)  
         
-        }}
+        }
+        //testing for smart AI delete if not work
+        //else if(PC[p].coordinates[i]!=hitCoord && smartCounter>0){smartCounter++}
+    
+    }
     }strike.push(hitCoord)    
         console.log("P1 strikes: "+ player1strikes)
         console.log("P2 strikes: "+ player2strikes)
         
     chanPlayer()
     }}
-
+console.log("III")
 
  function gameOver(){
     let count =0;
@@ -350,7 +356,7 @@ selectionModule.p1carrierShip();
 
 
 
-export {targetArrayy,hit,startGame,selectionModule,cip,Phit,sq,direction,pip,player1coord,player2coord,playerBase,chanPlayer,player1SunkShips,player2SunkShips,player1strikes,player2strikes}
+export {rNo,smartCounter,targetArrayy,hit,startGame,selectionModule,cip,Phit,sq,direction,pip,player1coord,player2coord,playerBase,chanPlayer,player1SunkShips,player2SunkShips,player1strikes,player2strikes}
 
 
 

@@ -1,4 +1,4 @@
-import{pip,direction,player1coord,player2coord,playerBase} from './index'
+import{smartCounter,cip,pip,direction,player1coord,player2coord,playerBase} from './index'
 import{chooseCrdnts} from './chooseCoordinates'
 import{overLap} from './overLap'
 
@@ -7,8 +7,17 @@ import{overLap} from './overLap'
 function shipfactory(name,coordinates){
     this.name = name
     this.coordinates = coordinates
-    this.hitShip = ()=>{alert("Struck the " + name + " ship")}
-    this.isSunk = () =>{if(coordinates.length===0){alert("Sunk the "+ name +" ship");}}
+    this.hitShip = ()=>{alert("Struck the " + name + " ship")
+    if(cip==="Y"&&pip===playerBase[1]){alert("well done computer")
+      if(smartCounter===0){smartCounter++}
+      else if(smartCounter>0){smartCounter;}
+
+      
+  
+  }
+}
+    this.isSunk = () =>{if(coordinates.length===0){alert("Sunk the "+ name +" ship");
+                                                   }}
     
   }
 

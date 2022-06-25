@@ -1,5 +1,5 @@
 import { chooseCrdnts } from "./chooseCoordinates";
-import { player1coord,player2coord,startGame,targetArrayy } from "./index"
+import { rNo,smartCounter,player1coord,player2coord,startGame,targetArrayy } from "./index"
 import { overLap } from "./overLap";
 import { shipfactory } from "./ships";
 
@@ -21,7 +21,7 @@ const computerAI = (() =>{
 
   
 
-  //testing below
+  //Produces the target array that the computer will select coordinates from
   function targetArray(){
       for(let i=65;i<75;i++){
         //change back to 10 below
@@ -39,8 +39,16 @@ function randomIntFromInterval(min, max) { // min and max included
 }
 
 function hit(){
+  console.log(smartCounter)
+
+         if(smartCounter===1){
+           rNo;
+         }
+         else if(smartCounter===2){alert("Yay")}
+
+         else{
           
-         let rNo = randomIntFromInterval(0, targetArrayy.length-1)
+         rNo = randomIntFromInterval(0, targetArrayy.length-1)}
          let fire = targetArrayy[rNo];
          targetArrayy.splice(rNo,1)
         console.log("Random no: "+rNo)
