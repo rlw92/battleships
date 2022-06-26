@@ -25,7 +25,7 @@ const computerAI = (() =>{
   function targetArray(){
       for(let i=65;i<75;i++){
         //change back to 10 below
-          for(let o=1;o<2;o++){
+          for(let o=1;o<3;o++){
               targetArrayy.push(String.fromCharCode(i) + o)
           }
       }
@@ -44,7 +44,7 @@ function hit(){
          if(smartCounter===1){
            rNo;
          }
-         else if(smartCounter===2){alert("Yay")}
+         else if(smartCounter===2){rNo+7}
 
          else{
           

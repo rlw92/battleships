@@ -92,6 +92,8 @@ function hit(t){console.log(t.target.dataset.letter);
     let L;
     let N;
     let hitCoord;
+    let smartTell = 0;
+    console.log(smartTell)
 
     if(cip==="Y"&&pip===playerBase[1]){
 
@@ -122,8 +124,12 @@ function hit(t){console.log(t.target.dataset.letter);
             console.log(PC[p].coordinates)
             PC[p].coordinates.splice(i,1)
         PC[p].hitShip();
-        PC[p].isSunk();    
-        
+        PC[p].isSunk();  
+
+        //ai  
+        smartTell++
+
+
         gameOver();
         
         console.log("Player one sunk ships: "+ player1SunkShips)  
@@ -137,10 +143,14 @@ function hit(t){console.log(t.target.dataset.letter);
     }strike.push(hitCoord)    
         console.log("P1 strikes: "+ player1strikes)
         console.log("P2 strikes: "+ player2strikes)
+
+        //ai
+        if(cip==="Y"&&pip===playerBase[1] && smartCounter>0 && smartTell>0){smartCounter++}
         
     chanPlayer()
+
     }}
-console.log("III")
+//console.log("III")
 
  function gameOver(){
     let count =0;
