@@ -1,4 +1,4 @@
-import{smartCounter,cip,pip,direction,player1coord,player2coord,playerBase} from './index'
+import{compAirecord,smartCounter,cip,pip,direction,player1coord,player2coord,playerBase} from './index'
 import{chooseCrdnts} from './chooseCoordinates'
 import{overLap} from './overLap'
 
@@ -7,8 +7,12 @@ import{overLap} from './overLap'
 function shipfactory(name,coordinates){
     this.name = name
     this.coordinates = coordinates
-    this.hitShip = ()=>{alert("Struck the " + name + " ship")
+    this.hitShip = (hit)=>{alert("Struck the " + name + " ship")
     if(cip==="Y"&&pip===playerBase[1]){alert("well done computer")
+     alert(hit+" has been hit.")
+    for(let i=0;i<compAirecord.length;i++){
+      if(name===compAirecord[i].name){compAirecord[i].coordinates.push(hit)}
+    }
       if(smartCounter===0){smartCounter++}
       else if(smartCounter>0){smartCounter;}
 

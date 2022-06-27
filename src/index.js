@@ -34,6 +34,12 @@ let cip = "N"
   
   computerAI.targetArray();
   console.log(targetArrayy)
+
+  let compAirecord=[{name:"Carrier",coordinates:[]},
+                    {name:"Battleship",coordinates:[]},
+                    {name:"Cruiser",coordinates:[]},
+                    {name:"Submarine",coordinates:[]},
+                    {name:"Destroyer",coordinates:[]}];
   
   
 
@@ -123,7 +129,7 @@ function hit(t){console.log(t.target.dataset.letter);
         if(PC[p].coordinates[i]===hitCoord){
             console.log(PC[p].coordinates)
             PC[p].coordinates.splice(i,1)
-        PC[p].hitShip();
+        PC[p].hitShip(hitCoord);
         PC[p].isSunk();  
 
         //ai  
@@ -366,7 +372,7 @@ selectionModule.p1carrierShip();
 
 
 
-export {rNo,smartCounter,targetArrayy,hit,startGame,selectionModule,cip,Phit,sq,direction,pip,player1coord,player2coord,playerBase,chanPlayer,player1SunkShips,player2SunkShips,player1strikes,player2strikes}
+export {compAirecord,rNo,smartCounter,targetArrayy,hit,startGame,selectionModule,cip,Phit,sq,direction,pip,player1coord,player2coord,playerBase,chanPlayer,player1SunkShips,player2SunkShips,player1strikes,player2strikes}
 
 
 

@@ -1,5 +1,5 @@
 import { chooseCrdnts } from "./chooseCoordinates";
-import { rNo,smartCounter,player1coord,player2coord,startGame,targetArrayy } from "./index"
+import { compAirecord,rNo,smartCounter,player1coord,player2coord,startGame,targetArrayy } from "./index"
 import { overLap } from "./overLap";
 import { shipfactory } from "./ships";
 
@@ -40,6 +40,7 @@ function randomIntFromInterval(min, max) { // min and max included
 
 function hit(){
   console.log(smartCounter)
+  console.log(compAirecord)
 
          if(smartCounter===1){
            rNo;
