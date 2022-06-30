@@ -42,14 +42,37 @@ function hit(){
   console.log(smartCounter)
   console.log(compAirecord)
 
-         if(smartCounter===1){
-           rNo;
-         }
-         else if(smartCounter===2){rNo+7}
+        /*
+        Below is the function that we are going to connect to the movement module
+        it will loop through the record of any computer ai hits and make a hit
+        anything that needs to be changed has a "TC comment"
+        */
 
-         else{
+
+          let i=0;
+       while(i<compAirecord.length){
+        if(i===compAirecord.length-1){
+          alert("NONONONONON")
+          rNo = randomIntFromInterval(0, targetArrayy.length-1)
+        break}
+
+          else if(compAirecord[i].coordinates.length>0){
+            //TC  below is just a test, ideally this function will choose a smart function.
+            alert(compAirecord[i].name)
+            rNo=3;
+            
+            //rNo=compAirecord[i].functions[compAirecord[i].functions.length-1](compAirecord[i].coordinates[compAirecord[i].coordinates.length-1],targetArray)
+            break}
+
+            else if(compAirecord[i].coordinates.length===0){i++}
+         
           
-         rNo = randomIntFromInterval(0, targetArrayy.length-1)}
+       }
+           
+        
+       // }
+
+
          let fire = targetArrayy[rNo];
          targetArrayy.splice(rNo,1)
         console.log("Random no: "+rNo)

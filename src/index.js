@@ -3,6 +3,7 @@ import {carrier,battleship,cruiser,submarine,destroyer} from './ships'
 import {domModule} from './dom'
 import {modalModule} from './modal'
 import {computerAI} from './computerAI'
+import {movementModule} from './movementModule'
 
 
 //computer in play
@@ -34,12 +35,15 @@ let cip = "N"
   
   computerAI.targetArray();
   console.log(targetArrayy)
+  //console.log("YERT")
 
-  let compAirecord=[{name:"Carrier",coordinates:[]},
-                    {name:"Battleship",coordinates:[]},
-                    {name:"Cruiser",coordinates:[]},
-                    {name:"Submarine",coordinates:[]},
-                    {name:"Destroyer",coordinates:[]}];
+  let compAirecord=[
+                    {name:"Carrier",coordinates:[],sunk:"N",functions:[movementModule.moveDown]},
+                    {name:"Battleship",coordinates:[],sunk:"N"},
+                    {name:"Cruiser",coordinates:[],sunk:"N"},
+                    {name:"Submarine",coordinates:["D1"],sunk:"N"},
+                    {name:"Destroyer",coordinates:[],sunk:"N"}
+                ];
   
   
 
