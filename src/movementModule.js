@@ -15,6 +15,7 @@ else{result = "N"}
 return result;
 }
 
+//A1 to B1
     const moveDown = (hit,arr) =>{
 
         let Lttr = hit.slice(0,1)
@@ -42,6 +43,7 @@ return result;
 
     }
 
+    //B1 to A1
     const moveUp = (hit,arr) =>{
 
         let Lttr = hit.slice(0,1)
@@ -69,6 +71,7 @@ return result;
 
     }
 
+    //a1 to a2
     const moveFwd = (hit,arr) =>{
 
         let Lttr = hit.slice(0,1)
@@ -97,6 +100,7 @@ return result;
 
     }
 
+    //a2 to a1
     const moveBck = (hit,arr) =>{
 
         let Lttr = hit.slice(0,1)

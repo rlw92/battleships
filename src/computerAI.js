@@ -1,5 +1,6 @@
 import { chooseCrdnts } from "./chooseCoordinates";
 import { compAirecord,rNo,smartCounter,player1coord,player2coord,startGame,targetArrayy } from "./index"
+import { movementModule } from "./movementModule";
 import { overLap } from "./overLap";
 import { shipfactory } from "./ships";
 
@@ -25,7 +26,7 @@ const computerAI = (() =>{
   function targetArray(){
       for(let i=65;i<75;i++){
         //change back to 10 below
-          for(let o=1;o<3;o++){
+          for(let o=1;o<11;o++){
               targetArrayy.push(String.fromCharCode(i) + o)
           }
       }
@@ -59,7 +60,15 @@ function hit(){
           else if(compAirecord[i].coordinates.length>0){
             //TC  below is just a test, ideally this function will choose a smart function.
             alert(compAirecord[i].name)
-            rNo=3;
+            let CA = compAirecord[i];
+            let CAtarget = CA.coordinates[CA.coordinates.length-1]
+            let CAfunc = compAirecord[i].functionCount;
+
+            alert(CAfunc)
+            if(CAfunc===0){let trg = movementModule.moveDown(CAtarget,targetArrayy)
+              alert(trg)
+              rNo=targetArrayy.indexOf(trg)}
+            
             
             //rNo=compAirecord[i].functions[compAirecord[i].functions.length-1](compAirecord[i].coordinates[compAirecord[i].coordinates.length-1],targetArray)
             break}

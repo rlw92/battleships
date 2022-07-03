@@ -35,13 +35,13 @@ let cip = "N"
   
   computerAI.targetArray();
   console.log(targetArrayy)
-  //console.log("YERT")
+  console.log("YERT")
 
   let compAirecord=[
-                    {name:"Carrier",coordinates:[],sunk:"N",functions:[movementModule.moveDown]},
-                    {name:"Battleship",coordinates:[],sunk:"N"},
+                    {name:"Carrier",coordinates:[],sunk:"N",functionCount:0},
+                    {name:"Battleship",coordinates:["A2"],sunk:"N",functionCount:0},
                     {name:"Cruiser",coordinates:[],sunk:"N"},
-                    {name:"Submarine",coordinates:["D1"],sunk:"N"},
+                    {name:"Submarine",coordinates:[],sunk:"N"},
                     {name:"Destroyer",coordinates:[],sunk:"N"}
                 ];
   
@@ -63,7 +63,7 @@ document.getElementById("shwshipos").addEventListener('mouseover',()=>{domModule
 document.getElementById("shwshipos").addEventListener('mouseleave',()=>{domModule.whiteOut();
     domModule.attackBoard();})
 
-   //console.log("HEYEE")
+   console.log("HEYEE")
 //function changes player
 const chanPlayer = ()=>{
     let t;
