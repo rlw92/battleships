@@ -11,12 +11,11 @@ function shipfactory(name,coordinates){
     if(cip==="Y"&&pip===playerBase[1]){alert("well done computer")
      alert(hit+" has been hit.")
     for(let i=0;i<compAirecord.length;i++){
-      if(name===compAirecord[i].name){compAirecord[i].coordinates.push(hit)}
-    }
-      if(smartCounter===0){smartCounter++}
-      else if(smartCounter>0){smartCounter;}
-
-      
+      if(name===compAirecord[i].name){compAirecord[i].coordinates.push(hit)
+        if(compAirecord[i].functionCount===0){compAirecord[i].functionCount++}
+        else if(compAirecord[i].functionCount>0){compAirecord[i].functionCount;}
+      }
+    }  
   
   }
 }

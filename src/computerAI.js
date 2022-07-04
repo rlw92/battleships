@@ -25,8 +25,8 @@ const computerAI = (() =>{
   //Produces the target array that the computer will select coordinates from
   function targetArray(){
       for(let i=65;i<75;i++){
-        //change back to 10 below
-          for(let o=1;o<11;o++){
+        //change back to 11 below
+          for(let o=1;o<3;o++){
               targetArrayy.push(String.fromCharCode(i) + o)
           }
       }
@@ -42,7 +42,7 @@ function randomIntFromInterval(min, max) { // min and max included
 function hit(){
   console.log(smartCounter)
   console.log(compAirecord)
-
+let CAfunc
         /*
         Below is the function that we are going to connect to the movement module
         it will loop through the record of any computer ai hits and make a hit
@@ -51,8 +51,8 @@ function hit(){
 
 
           let i=0;
-       while(i<compAirecord.length){
-        if(i===compAirecord.length-1){
+       while(i<=compAirecord.length){
+        if(i===compAirecord.length){
           alert("NONONONONON")
           rNo = randomIntFromInterval(0, targetArrayy.length-1)
         break}
@@ -62,15 +62,30 @@ function hit(){
             alert(compAirecord[i].name)
             let CA = compAirecord[i];
             let CAtarget = CA.coordinates[CA.coordinates.length-1]
-            let CAfunc = compAirecord[i].functionCount;
+            CAfunc = compAirecord[i].functionCount;
+            let CAsunk = compAirecord[i].sunk;
+
+
+          
 
             alert(CAfunc)
-            if(CAfunc===0){let trg = movementModule.moveDown(CAtarget,targetArrayy)
+            if(CAfunc===1 && CAsunk==="N"){let trg = movementModule.moveDown(CAtarget,targetArrayy)
               alert(trg)
               rNo=targetArrayy.indexOf(trg)}
+             else if(CAfunc===2 && CAsunk==="N"){let trg = movementModule.moveUp(CAtarget,targetArrayy)
+                alert(trg)
+                rNo=targetArrayy.indexOf(trg)}
+                else if(CAfunc===3 && CAsunk==="N"){let trg = movementModule.moveFwd(CAtarget,targetArrayy)
+                  alert(trg)
+                  rNo=targetArrayy.indexOf(trg)}
+                  else if(CAfunc===4 && CAsunk==="N"){let trg = movementModule.moveBck(CAtarget,targetArrayy)
+                    alert(trg)
+                    rNo=targetArrayy.indexOf(trg)}
+
+  
             
             
-            //rNo=compAirecord[i].functions[compAirecord[i].functions.length-1](compAirecord[i].coordinates[compAirecord[i].coordinates.length-1],targetArray)
+            
             break}
 
             else if(compAirecord[i].coordinates.length===0){i++}
@@ -87,6 +102,7 @@ function hit(){
         console.log("Random no: "+rNo)
          console.log("Length: "+targetArrayy.length)
          console.log(targetArrayy)
+         
          return fire
 
 }

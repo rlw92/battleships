@@ -33,16 +33,17 @@ let cip = "N"
   let smartCounter = 0;
   let rNo;
   
+  
   computerAI.targetArray();
   console.log(targetArrayy)
   console.log("YERT")
 
   let compAirecord=[
                     {name:"Carrier",coordinates:[],sunk:"N",functionCount:0},
-                    {name:"Battleship",coordinates:["A2"],sunk:"N",functionCount:0},
-                    {name:"Cruiser",coordinates:[],sunk:"N"},
-                    {name:"Submarine",coordinates:[],sunk:"N"},
-                    {name:"Destroyer",coordinates:[],sunk:"N"}
+                    {name:"Battleship",coordinates:[],sunk:"N",functionCount:0},
+                    {name:"Cruiser",coordinates:[],sunk:"N",functionCount:0},
+                    {name:"Submarine",coordinates:[],sunk:"N",functionCount:0},
+                    {name:"Destroyer",coordinates:[],sunk:"N",functionCount:0}
                 ];
   
   
@@ -91,7 +92,7 @@ console.log("OIL")
 
 
 //below functions need to be grouped into a module
-console.log("INRST")
+//console.log("INRST")
 
 function hit(t){console.log(t.target.dataset.letter);
 
@@ -106,8 +107,8 @@ function hit(t){console.log(t.target.dataset.letter);
     console.log(smartTell)
 
     if(cip==="Y"&&pip===playerBase[1]){
-
-        hitCoord = computerAI.hit();
+         hitCoord = computerAI.hit();      
+        
         
     
     alert("Computer has struck Tile: "+hitCoord)
@@ -118,6 +119,8 @@ function hit(t){console.log(t.target.dataset.letter);
     L = t.target.dataset.letter;
     N = t.target.dataset.number;
     hitCoord = L+N;}
+
+
     console.log(hitCoord);
     console.log(PC.length); 
     if(pip === playerBase[0]){PC = player2coord;strike=player1strikes;Phit=t.target.dataset.P1hit}
@@ -137,7 +140,7 @@ function hit(t){console.log(t.target.dataset.letter);
         PC[p].isSunk();  
 
         //ai  
-        smartTell++
+        ++smartTell
 
 
         gameOver();
@@ -146,16 +149,26 @@ function hit(t){console.log(t.target.dataset.letter);
         console.log("Player two sunk ships: "+ player2SunkShips)  
         
         }
-        //testing for smart AI delete if not work
-        //else if(PC[p].coordinates[i]!=hitCoord && smartCounter>0){smartCounter++}
+        
     
     }
     }strike.push(hitCoord)    
         console.log("P1 strikes: "+ player1strikes)
         console.log("P2 strikes: "+ player2strikes)
 
-        //ai
-        if(cip==="Y"&&pip===playerBase[1] && smartCounter>0 && smartTell>0){smartCounter++}
+//missed section if the smartTell hasn't increased,player has missed
+if(smartTell===0){alert("MISSED")
+if(cip==="Y"&&pip===playerBase[1]){
+    //testing smartAI
+    let i=0;
+    while(i<compAirecord.length){
+     if(compAirecord[i].functionCount>0){compAirecord[i].functionCount++; break}
+     else{i++}
+
+
+    }}}
+
+
         
     chanPlayer()
 
