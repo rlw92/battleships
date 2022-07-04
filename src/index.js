@@ -39,7 +39,7 @@ let cip = "N"
   console.log("YERT")
 
   let compAirecord=[
-                    {name:"Carrier",coordinates:[],sunk:"N",functionCount:0},
+                    {name:"Carrier",coordinates:["B10"],sunk:"N",functionCount:1},
                     {name:"Battleship",coordinates:[],sunk:"N",functionCount:0},
                     {name:"Cruiser",coordinates:[],sunk:"N",functionCount:0},
                     {name:"Submarine",coordinates:[],sunk:"N",functionCount:0},

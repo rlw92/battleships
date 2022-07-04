@@ -19,7 +19,7 @@ return result;
     const moveDown = (hit,arr) =>{
 
         let Lttr = hit.slice(0,1)
-        let nnumber = hit.slice(1,2)
+        let nnumber = hit.slice(1,3)
         let LtrNumber = Lttr.charCodeAt(0)
         let newLttrr = String.fromCharCode(++LtrNumber)
        
@@ -47,7 +47,7 @@ return result;
     const moveUp = (hit,arr) =>{
 
         let Lttr = hit.slice(0,1)
-        let nnumber = hit.slice(1,2)
+        let nnumber = hit.slice(1,3)
         let LtrNumber = Lttr.charCodeAt(0)
        let newLttrr = String.fromCharCode(--LtrNumber)
 
@@ -75,7 +75,7 @@ return result;
     const moveFwd = (hit,arr) =>{
 
         let Lttr = hit.slice(0,1)
-        let number = hit.slice(1,2)
+        let number = hit.slice(1,3)
         let nnumber = parseInt(number)
         let newNo = ++nnumber
 
@@ -104,7 +104,7 @@ return result;
     const moveBck = (hit,arr) =>{
 
         let Lttr = hit.slice(0,1)
-        let number = hit.slice(1,2)
+        let number = hit.slice(1,3)
         let nnumber = parseInt(number)
         let newNo = --nnumber
 
