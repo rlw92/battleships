@@ -53,7 +53,7 @@ let CAfunc
           let i=0;
        while(i<=compAirecord.length){
         if(i===compAirecord.length){
-          alert("NONONONONON")
+          alert("Computer is choosing it's target...")
           rNo = randomIntFromInterval(0, targetArrayy.length-1)
         break}
 
@@ -88,8 +88,12 @@ let CAfunc
             
             break}
 
-            else if(compAirecord[i].coordinates.length===0){i++}
-            else if(compAirecord[i].coordinates.length>0 && compAirecord.sunk==="Y"){i++}
+            else{i++}
+                
+            //unsure if needed below
+            //else if(compAirecord[i].coordinates.length===0){i++}
+            
+            //else if(compAirecord[i].coordinates.length>0 && compAirecord.sunk==="Y"){i++}
          
           
        }
