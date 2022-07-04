@@ -20,6 +20,15 @@ function shipfactory(name,coordinates){
   }
 }
     this.isSunk = () =>{if(coordinates.length===0){alert("Sunk the "+ name +" ship");
+    if(cip==="Y"&&pip===playerBase[1]){alert("Great Work computer")
+     alert(name+" has been sunk")
+    for(let i=0;i<compAirecord.length;i++){
+      if(name===compAirecord[i].name){compAirecord[i].sunk="Y"
+        
+      }
+    }  
+  
+  }
                                                    }}
     
   }

@@ -26,7 +26,7 @@ const computerAI = (() =>{
   function targetArray(){
       for(let i=65;i<75;i++){
         //change back to 11 below
-          for(let o=1;o<3;o++){
+          for(let o=1;o<11;o++){
               targetArrayy.push(String.fromCharCode(i) + o)
           }
       }
