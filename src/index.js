@@ -36,7 +36,7 @@ let cip = "N"
   
   computerAI.targetArray();
   console.log(targetArrayy)
-  console.log("YERT")
+  //console.log("YERT")
 
   let compAirecord=[
                     {name:"Carrier",coordinates:[],sunk:"N",functionCount:0},

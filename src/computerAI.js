@@ -57,7 +57,7 @@ let CAfunc
           rNo = randomIntFromInterval(0, targetArrayy.length-1)
         break}
 
-          else if(compAirecord[i].coordinates.length>0){
+          else if(compAirecord[i].coordinates.length>0 && compAirecord[i].sunk==="N"){
             //TC  below is just a test, ideally this function will choose a smart function.
             alert(compAirecord[i].name)
             let CA = compAirecord[i];
@@ -89,6 +89,7 @@ let CAfunc
             break}
 
             else if(compAirecord[i].coordinates.length===0){i++}
+            else if(compAirecord[i].coordinates.length>0 && compAirecord.sunk==="Y"){i++}
          
           
        }
