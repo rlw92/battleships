@@ -40,7 +40,7 @@ let cip = "N"
 
   let compAirecord=[
                                            //change back after testing
-                    {name:"Carrier",coordinates:["A1"],sunk:"N",functionCount:1},
+                    {name:"Carrier",coordinates:["J10"],sunk:"N",functionCount:1},
                     {name:"Battleship",coordinates:[],sunk:"N",functionCount:0},
                     {name:"Cruiser",coordinates:[],sunk:"N",functionCount:0},
                     {name:"Submarine",coordinates:[],sunk:"N",functionCount:0},

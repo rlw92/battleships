@@ -71,13 +71,18 @@ let CAfunc
             alert(CAfunc)
             if(CAfunc===1 && CAsunk==="N"){let trg = movementModule.moveDown(CAtarget,targetArrayy)
               alert(trg)
-              rNo=targetArrayy.indexOf(trg)}
+              rNo=targetArrayy.indexOf(trg)
+              
+            }
+
              else if(CAfunc===2 && CAsunk==="N"){let trg = movementModule.moveUp(CAtarget,targetArrayy)
                 alert(trg)
                 rNo=targetArrayy.indexOf(trg)}
+
                 else if(CAfunc===3 && CAsunk==="N"){let trg = movementModule.moveFwd(CAtarget,targetArrayy)
                   alert(trg)
                   rNo=targetArrayy.indexOf(trg)}
+
                   else if(CAfunc===4 && CAsunk==="N"){let trg = movementModule.moveBck(CAtarget,targetArrayy)
                     alert(trg)
                     rNo=targetArrayy.indexOf(trg)}
