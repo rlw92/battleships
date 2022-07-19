@@ -1,4 +1,4 @@
-import {cip,selectionModule,hit} from './index'
+import {gmovrCount,cip,selectionModule,hit} from './index'
 
 const modalModule = (() =>{
 // Get the modal
@@ -58,6 +58,7 @@ function playerSelect(){
 
     frnd.addEventListener('click',()=>{
       cip = "N"
+      gmovrCount = document.getElementById("gmovrShips").value;
       modal.style.display = "none";
       
 
@@ -65,6 +66,7 @@ function playerSelect(){
 
    comp.addEventListener('click',()=>{
       cip = "Y"
+      gmovrCount = document.getElementById("gmovrShips").value;
       modal.style.display = "none";
       
 

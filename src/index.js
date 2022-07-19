@@ -33,6 +33,7 @@ let cip = "N"
   let smartCounter = 0;
   let rNo;
   //below variable for determining how many ships the player has to sunk to initiate a game over
+  let gmovrCount;
   
   
   computerAI.targetArray();
@@ -94,7 +95,7 @@ console.log("OIL")
 
 
 //below functions need to be grouped into a module
-//console.log("INRST")
+console.log("INRST")
 
 function hit(t){console.log(t.target.dataset.letter);
 
@@ -175,7 +176,7 @@ if(cip==="Y"&&pip===playerBase[1]){
     chanPlayer()
 
     }}
-//console.log("III")
+console.log("III")
 
  function gameOver(){
     let count =0;
@@ -190,11 +191,11 @@ if(cip==="Y"&&pip===playerBase[1]){
 
     //change below count to 1 for a quick game, 5 for a full game
     //may be worth allowing players to change it before game to see what length of game they want to play
-    if(count===5){alert( plr+ " has won!")}
+    if(count===(+gmovrCount)){alert( plr+ " has won!")}
     }
     
 
-function startGame(){
+function startGame(){console.log(gmovrCount)
     
     if(Pcrd.length>4){
         if(cip==="Y"){
@@ -391,7 +392,7 @@ selectionModule.p1carrierShip();
 
 
 
-export {compAirecord,rNo,smartCounter,targetArrayy,hit,startGame,selectionModule,cip,Phit,sq,direction,pip,player1coord,player2coord,playerBase,chanPlayer,player1SunkShips,player2SunkShips,player1strikes,player2strikes}
+export {gmovrCount,compAirecord,rNo,smartCounter,targetArrayy,hit,startGame,selectionModule,cip,Phit,sq,direction,pip,player1coord,player2coord,playerBase,chanPlayer,player1SunkShips,player2SunkShips,player1strikes,player2strikes}
 
 
 
