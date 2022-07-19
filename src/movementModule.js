@@ -27,6 +27,7 @@ const movementModule = (() => {
            let i=0;
            while(i<=10){
             if(i===10){newHit=moveUp(hit,arr);
+                
                 break}
              else if(match((newLttrr+nnumber),arr)==="N"){
                  newLttrr = String.fromCharCode(++LtrNumber)
@@ -57,8 +58,9 @@ const movementModule = (() => {
            let newHit;
     
            let i=0;
-           while(i<10){
+           while(i<=10){
             if(i===10){newHit=moveFwd(hit,arr);
+                
                 break}
              else if(match((newLttrr+nnumber),arr)==="N"){
                  newLttrr = String.fromCharCode(--LtrNumber)
@@ -90,6 +92,7 @@ const movementModule = (() => {
             while(i<=10){
                 
                 if(i===10){newHit=moveBck(hit,arr);
+                    
                  break}
               else if(match((Lttr+newNo),arr)==="N"){
                   newNo = ++nnumber
@@ -111,7 +114,7 @@ const movementModule = (() => {
     
         }
     
-        const moveBck = (hit,arr) =>{
+        const moveBck = (hit,arr,num) =>{
     
             let Lttr = hit.slice(0,1)
             let number = hit.slice(1,3)
@@ -120,8 +123,9 @@ const movementModule = (() => {
             let newHit;
     
             let i=0;
-            while(i<10){
+            while(i<=10){
                 if(i===10){newHit=moveDown(hit,arr);
+                    
                     break}
               else if(match((Lttr+newNo),arr)==="N"){
                   newNo = --nnumber

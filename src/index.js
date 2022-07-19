@@ -32,15 +32,16 @@ let cip = "N"
   let targetArrayy = [];
   let smartCounter = 0;
   let rNo;
+  //below variable for determining how many ships the player has to sunk to initiate a game over
   
   
   computerAI.targetArray();
   console.log(targetArrayy)
-  //console.log("YERT")
+  console.log("YERT")
 
   let compAirecord=[
                                            //change back after testing
-                    {name:"Carrier",coordinates:["J10"],sunk:"N",functionCount:1},
+                    {name:"Carrier",coordinates:[],sunk:"N",functionCount:0},
                     {name:"Battleship",coordinates:[],sunk:"N",functionCount:0},
                     {name:"Cruiser",coordinates:[],sunk:"N",functionCount:0},
                     {name:"Submarine",coordinates:[],sunk:"N",functionCount:0},
